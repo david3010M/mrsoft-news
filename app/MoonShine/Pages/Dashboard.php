@@ -4,7 +4,14 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Pages;
 
+use App\Models\Category;
+use App\Models\News;
+use App\Models\Product;
+use MoonShine\Decorations\Column;
+use MoonShine\Decorations\Grid;
+use MoonShine\Metrics\ValueMetric;
 use MoonShine\Pages\Page;
+use MoonShine\Decorations\Block;
 
 class Dashboard extends Page
 {
@@ -22,7 +29,20 @@ class Dashboard extends Page
 
     public function components(): array
     {
-        return [];
+        return [
+            Grid::make([
+                Column::make([
+                    ValueMetric::make('Productos')->value(Product::count()),
+                    ValueMetric::make('Categorías')->value(Category::count()),
+                ])->columnSpan(6),
+                Column::make([
+                    ValueMetric::make('Noticias')->value(News::count()),
+                    ValueMetric::make('Noticias')->value(News::count()),
+                ])->columnSpan(6),
+
+            ]),
+
+        ];
     }
 
 }

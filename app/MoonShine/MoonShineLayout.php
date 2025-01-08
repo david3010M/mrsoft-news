@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\MoonShine;
 
 use MoonShine\Components\Layout\{Content, Flash, Footer, Header, LayoutBlock, LayoutBuilder, Menu, Sidebar};
+use MoonShine\ActionButtons\ActionButton;
 use MoonShine\Contracts\MoonShineLayoutContract;
 
 final class MoonShineLayout implements MoonShineLayoutContract

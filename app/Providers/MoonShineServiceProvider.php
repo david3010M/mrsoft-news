@@ -8,10 +8,12 @@ use App\Models\Category;
 use App\Models\News;
 use App\MoonShine\Resources\CategoryResource;
 use App\MoonShine\Resources\NewsResource;
+use MoonShine\ActionButtons\ActionButton;
 use MoonShine\Providers\MoonShineApplicationServiceProvider;
 use MoonShine\MoonShine;
 use MoonShine\Menu\MenuGroup;
 use MoonShine\Menu\MenuItem;
+use MoonShine\Resources\ModelResource;
 use MoonShine\Resources\MoonShineUserResource;
 use MoonShine\Resources\MoonShineUserRoleResource;
 
@@ -39,11 +41,11 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                     static fn() => __('moonshine::ui.resource.role_title'),
                     new MoonShineUserRoleResource()
                 ),
-            ]),
+            ], 'heroicons.wrench'),
             MenuGroup::make('Contenido', [
                 MenuItem::make('Noticias', new NewsResource(), 'heroicons.newspaper')->badge(fn() => (string)News::count()),
                 MenuItem::make('Categorias', new CategoryResource(), 'heroicons.outline.cube')->badge(fn() => (string)Category::count()),
-            ]),
+            ], 'heroicons.outline.folder'),
 //            MenuItem::make('Documentation', 'https://moonshine-laravel.com')
 //               ->badge(fn() => 'Check'),
         ];
@@ -56,8 +58,8 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
     {
         return [
             'colors' => [
-                'primary' => 'rgb(20, 20, 20)',
-                'secondary' => 'rgb(30, 30, 30)',
+//                'primary' => 'rgb(20, 20, 20)',
+//                'secondary' => 'rgb(30, 30, 30)',
             ],
         ];
     }

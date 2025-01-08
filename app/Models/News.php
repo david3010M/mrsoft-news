@@ -9,7 +9,9 @@ class News extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'category_id'];
+    protected $fillable = ['title', 'news', 'description', 'category_id', 'content'];
+
+    protected $hidden = ['created_at', 'updated_at'];
 
 //    public static function boot()
 //    {
@@ -24,5 +26,10 @@ class News extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
     }
 }

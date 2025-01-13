@@ -9,7 +9,11 @@ class News extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'news', 'description', 'category_id', 'content'];
+    protected $fillable = ['title', 'description', 'date', 'content', 'typeMedia', 'images', 'product_id', 'category_id',];
+
+    protected $casts = [
+        'images' => 'array',
+    ];
 
     protected $hidden = ['created_at', 'updated_at'];
 
@@ -31,5 +35,10 @@ class News extends Model
     public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+
+    public function files()
+    {
+        return $this->hasMany(File::class);
     }
 }

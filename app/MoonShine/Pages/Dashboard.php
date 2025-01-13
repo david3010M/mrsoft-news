@@ -39,7 +39,6 @@ class Dashboard extends Page
                     ValueMetric::make('Noticias')->value(News::count()),
                     ValueMetric::make('Noticias')->value(News::count()),
                 ])->columnSpan(6),
-
             ]),
 
         ];

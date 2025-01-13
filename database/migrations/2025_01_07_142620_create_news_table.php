@@ -14,8 +14,11 @@ return new class extends Migration {
             $table->id();
             $table->text('title');
             $table->text('description');
+            $table->date('date');
             $table->string('image')->nullable();
+            $table->json('images')->nullable();
             $table->text('content');
+            $table->string('typeMedia')->nullable();
             $table->foreignId('product_id')->nullable()->constrained();
             $table->foreignId('category_id')->nullable()->constrained();
             $table->timestamps();

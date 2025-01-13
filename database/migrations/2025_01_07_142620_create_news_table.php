@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->string('image')->nullable();
             $table->json('images')->nullable();
             $table->text('content');
+            $table->boolean('active')->default(true);
             $table->string('typeMedia')->nullable();
             $table->foreignId('product_id')->nullable()->constrained();
             $table->foreignId('category_id')->nullable()->constrained();

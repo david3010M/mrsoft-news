@@ -9,7 +9,7 @@ class News extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'date', 'content', 'typeMedia', 'images', 'product_id', 'category_id',];
+    protected $fillable = ['title', 'active', 'description', 'date', 'content', 'typeMedia', 'images', 'product_id', 'category_id',];
 
     protected $casts = [
         'images' => 'array',
@@ -40,5 +40,18 @@ class News extends Model
     public function files()
     {
         return $this->hasMany(File::class);
+    }
+
+    public function newsRelated(int $id)
+    {
+//        buscar 4 news de la misma categoria y producto y las mas recientes
+        $news = News::find($id);
+        return News::where('category_id', $news->category_id)
+            ->where('product_id', $news->product_id)
+            ->where('id', '!=', $id)
+            ->orderBy('date', 'desc')
+            ->limit(6)
+            ->get();
+
     }
 }

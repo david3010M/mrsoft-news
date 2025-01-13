@@ -9,6 +9,18 @@ class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * @OA\Get(
+     *     path="/mrsoft-news/public/api/category",
+     *     summary="Get all categories",
+     *     tags={"Category"},
+     *     @OA\Response(response="200", description="Success", @OA\JsonContent(type="array",
+     *         @OA\Items(
+     *             @OA\Property(property="id", type="integer", example="1"),
+     *             @OA\Property(property="name", type="string", example="Category name"),
+     *             @OA\Property(property="description", type="string", example="Category description")
+     *         )
+     *     )),
+     * )
      */
     public function index()
     {

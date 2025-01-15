@@ -29,9 +29,9 @@ class NewsController extends Controller
         $category = $request->query('category');
         $news = News::with(['category', 'product'])
             ->where('active', true)
-            ->whereHas('category', fn($query) => $query->where('name', $category))
             ->whereHas('product', fn($query) => $query->where('name', $product))
             ->orderBy('date', 'desc');
+        if ($category) $news->whereHas('category', fn($query) => $query->where('name', $category));
         if ($request->has('limit')) $news->limit($request->input('limit'));
         return response()->json(NewsRelatedResource::collection($news->get()));
     }

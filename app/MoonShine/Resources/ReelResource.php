@@ -5,15 +5,12 @@ declare(strict_types=1);
 namespace App\MoonShine\Resources;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\News;
-use Illuminate\Database\Eloquent\Builder;
-use MoonShine\Decorations\LineBreak;
+use App\Models\Reel;
+
 use MoonShine\Fields\Date;
 use MoonShine\Fields\File;
 use MoonShine\Fields\Image;
-use MoonShine\Fields\Number;
 use MoonShine\Fields\Relationships\BelongsTo;
-use MoonShine\Fields\Relationships\BelongsToMany;
 use MoonShine\Fields\Select;
 use MoonShine\Fields\Switcher;
 use MoonShine\Fields\Text;
@@ -21,16 +18,16 @@ use MoonShine\Fields\Textarea;
 use MoonShine\Fields\TinyMce;
 use MoonShine\Handlers\ExportHandler;
 use MoonShine\Handlers\ImportHandler;
-use MoonShine\QueryTags\QueryTag;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
 
-class NewsResource extends ModelResource
+class ReelResource extends ModelResource
 {
-    protected string $model = News::class;
+    protected string $model = Reel::class;
 
-    protected string $title = 'Noticias';
+    protected string $title = 'Reels';
+
     protected int $itemsPerPage = 4;
 
     public function export(): ?ExportHandler
@@ -56,37 +53,17 @@ class NewsResource extends ModelResource
             Block::make([
                 ID::make()->hideOnIndex(),
                 Switcher::make('Activo', 'active'),
-                Date::make('Fecha', 'date')->required()->format('d-m-Y'),
                 BelongsTo::make('Producto', 'product', fn($item) => "$item->name")->required()->searchable(),
-                BelongsTo::make('Categoría', 'category', fn($item) => "$item->name")->required()->searchable(),
                 Text::make('Título', 'title')->required(),
                 Textarea::make('Descripción', 'description')->required()->hideOnIndex(),
-                Image::make('Imagen Cabecera', 'image')
+                File::make('Video', 'video')
                     ->removable()
-                    ->dir('newsIntroImages')
-                    ->allowedExtensions(['png', 'jpg', 'jpeg'])
+                    ->dir('reels')
+                    ->allowedExtensions(['mp4'])
                     ->keepOriginalFileName(),
-                Select::make('Multimedia', 'typeMedia')
-                    ->options([
-                        'slider' => 'Slider',
-                        'video' => 'Video',
-                        'image' => 'Imagen',
-                    ])
-                    ->hideOnIndex()
-                    ->required(),
-                File::make('Archivos', 'images')
-                    ->removable()
-                    ->hideOnIndex()
-                    ->multiple()
-                    ->dir('newsImages')
-                    ->allowedExtensions(['png', 'jpg', 'jpeg', 'mp4', 'avi', 'gif'])
-                    ->keepOriginalFileName(),
-                TinyMce::make('Contenido', 'content')
-                    ->hideOnIndex()
             ]),
         ];
     }
-
 
     public function rules(Model $item): array
     {

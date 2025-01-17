@@ -8,10 +8,12 @@ use App\Models\Category;
 use App\Models\File;
 use App\Models\News;
 use App\Models\Product;
+use App\Models\Reel;
 use App\MoonShine\Resources\CategoryResource;
 use App\MoonShine\Resources\FileResource;
 use App\MoonShine\Resources\NewsResource;
 use App\MoonShine\Resources\ProductResource;
+use App\MoonShine\Resources\ReelResource;
 use MoonShine\ActionButtons\ActionButton;
 use MoonShine\Providers\MoonShineApplicationServiceProvider;
 use MoonShine\MoonShine;
@@ -48,6 +50,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
             ], 'heroicons.wrench'),
             MenuGroup::make('Contenido', [
                 MenuItem::make('Noticias', new NewsResource(), 'heroicons.newspaper')->badge(fn() => (string)News::count()),
+                MenuItem::make('Reels', new ReelResource(), 'heroicons.outline.device-phone-mobile')->badge(fn() => (string)Reel::count()),
                 MenuItem::make('Categorias', new CategoryResource(), 'heroicons.outline.cube')->badge(fn() => (string)Category::count()),
                 MenuItem::make('Productos', new ProductResource(), 'heroicons.outline.rocket-launch')->badge(fn() => (string)Product::count()),
                 MenuItem::make('Subir Archivos', new FileResource(), 'heroicons.cloud-arrow-up')->badge(fn() => (string)File::count()),

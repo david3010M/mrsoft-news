@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ReelController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,3 +27,5 @@ Route::resource('category', CategoryController::class)->only(['index', 'show', '
 Route::resource('news', NewsController::class)->only(['index', 'show', 'store', 'update', 'destroy'])
     ->names(['index' => 'news.index', 'store' => 'news.store', 'show' => 'news.show', 'update' => 'news.update', 'destroy' => 'news.destroy']);
 
+Route::resource('reel', ReelController::class)->only(['index', 'show', 'store', 'update', 'destroy'])
+    ->names(['index' => 'reel.index', 'store' => 'reel.store', 'show' => 'reel.show', 'update' => 'reel.update', 'destroy' => 'reel.destroy']);

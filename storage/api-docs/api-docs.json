@@ -159,6 +159,63 @@
                     }
                 }
             }
+        },
+        "/mrsoft-news/public/api/reel": {
+            "get": {
+                "tags": [
+                    "Reel"
+                ],
+                "summary": "Get all reels",
+                "operationId": "bdc349ef0a097282fc223ca049def836",
+                "parameters": [
+                    {
+                        "name": "product",
+                        "in": "query",
+                        "description": "Product name",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "Gesrest",
+                                "360sys",
+                                "HotelHUB",
+                                "Comprobante-e"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Limit of news",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ReelResourceCollection"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -343,6 +400,33 @@
                     }
                 },
                 "type": "object"
+            },
+            "ReelResource": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "title": {
+                        "type": "string",
+                        "example": "News title"
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "News description"
+                    },
+                    "video": {
+                        "type": "string",
+                        "example": "http://localhost/storage/video.mp4"
+                    }
+                },
+                "type": "object"
+            },
+            "ReelResourceCollection": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/ReelResource"
+                }
             }
         },
         "securitySchemes": {
@@ -363,6 +447,10 @@
         {
             "name": "News",
             "description": "News"
+        },
+        {
+            "name": "Reel",
+            "description": "Reel"
         }
     ]
 }

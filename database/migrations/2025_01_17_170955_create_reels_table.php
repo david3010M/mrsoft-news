@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('reels', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
             $table->string('video');
             $table->boolean('active')->default(true);
             $table->foreignId('product_id')->nullable()->constrained();

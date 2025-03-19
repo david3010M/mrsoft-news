@@ -12,7 +12,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *     @OA\Property(property="id", type="integer", example="1"),
  *     @OA\Property(property="nombre", type="string", example="News title"),
  *     @OA\Property(property="direccion", type="string", example="News description"),
- *     @OA\Property(property="logo", type="string", example="http://localhost/storage/logo.png"),
+ *     @OA\Property(property="logo", type="string", example="https://develop.garzasoft.com/storage/logo.png"),
  * )
  *
  * @OA\Schema(

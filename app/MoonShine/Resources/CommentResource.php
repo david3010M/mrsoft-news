@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\MoonShine\Resources;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Client;
+use App\Models\Comment;
 
 use MoonShine\Fields\File;
 use MoonShine\Fields\Relationships\BelongsTo;
@@ -18,10 +18,11 @@ use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
 
-class ClientResource extends ModelResource
+class CommentResource extends ModelResource
 {
-    protected string $model = Client::class;
-    protected string $title = 'Clientes';
+    protected string $model = Comment::class;
+
+    protected string $title = 'Comentarios';
     protected int $itemsPerPage = 4;
 
     public function export(): ?ExportHandler
@@ -48,13 +49,10 @@ class ClientResource extends ModelResource
                 ID::make()->hideOnIndex(),
                 Switcher::make('Activo', 'active'),
                 BelongsTo::make('Producto', 'product', fn($item) => "$item->name")->required()->searchable(),
-                Text::make('Nombre', 'nombre')->required(),
-                Text::make('Dirección', 'direccion')->required()->hideOnIndex(),
-                File::make('Logo', 'logo')
-                    ->removable()
-                    ->dir('clientes')
-                    ->allowedExtensions(['png', 'jpg', 'jpeg', 'svg'])
-                    ->keepOriginalFileName(),
+                BelongsTo::make('Cliente', 'client', fn($item) => "$item->nombre")->required()->searchable(),
+                Textarea::make('Contenido', 'content')->required(),
+                Text::make('Persona', 'person')->required(),
+                Text::make('Cargo', 'position')->required(),
             ]),
         ];
     }

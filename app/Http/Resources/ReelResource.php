@@ -11,7 +11,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *     @OA\Property(property="id", type="integer", example="1"),
  *     @OA\Property(property="title", type="string", example="News title"),
  *     @OA\Property(property="description", type="string", example="News description"),
- *     @OA\Property(property="video", type="string", example="http://localhost/storage/video.mp4"),
+ *     @OA\Property(property="video", type="string", example="https://develop.garzasoft.com/storage/video.mp4"),
  * )
  *
  * @OA\Schema(

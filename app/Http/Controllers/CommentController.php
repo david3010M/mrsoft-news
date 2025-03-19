@@ -2,36 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\IndexClientRequest;
-use App\Http\Requests\IndexReelRequest;
-use App\Http\Resources\ClientResource;
-use App\Http\Resources\ReelResource;
-use App\Models\Client;
-use App\Models\Reel;
+use App\Http\Requests\IndexCommentRequest;
+use App\Http\Resources\CommentResource;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
-class ClientController extends Controller
+class CommentController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/mrsoft-news/public/api/client",
-     *     summary="Get all clients",
-     *     tags={"Client"},
+     *     path="/mrsoft-news/public/api/comment",
+     *     summary="Get all comments",
+     *     tags={"Comment"},
      *     @OA\Parameter(name="product", in="query", required=true, description="Product name", @OA\Schema(type="string", enum={"Gesrest", "360sys", "HotelHUB", "Comprobante-e", "Mr. Soft"})),
      *     @OA\Parameter(name="limit", in="query", required=false, description="Limit of clients", @OA\Schema(type="integer")),
      *     @OA\Response(response="200", description="Success", @OA\JsonContent(ref="#/components/schemas/CommentResourceCollection")),
      *     @OA\Response(response="401", description="Unauthenticated", @OA\JsonContent(ref="#/components/schemas/Unauthenticated"))
      * )
      */
-    public function index(IndexClientRequest $request)
+    public function index(IndexCommentRequest $request)
     {
         $product = $request->query('product');
-        $clients = Client::with('product')
+        $clients = Comment::with('product')
             ->where('active', true)
             ->whereHas('product', fn($query) => $query->where('name', $product))
             ->orderBy('created_at', 'desc');
         if ($request->has('limit')) $clients->limit($request->input('limit'));
-        return response()->json(ClientResource::collection($clients->get()));
+        return response()->json(CommentResource::collection($clients->get()));
     }
 
     /**
@@ -53,7 +50,7 @@ class ClientController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Client $client)
+    public function show(Comment $comment)
     {
         //
     }
@@ -61,7 +58,7 @@ class ClientController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Client $client)
+    public function edit(Comment $comment)
     {
         //
     }
@@ -69,7 +66,7 @@ class ClientController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Client $client)
+    public function update(Request $request, Comment $comment)
     {
         //
     }
@@ -77,7 +74,7 @@ class ClientController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Client $client)
+    public function destroy(Comment $comment)
     {
         //
     }

@@ -85,7 +85,65 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ReelResourceCollection"
+                                    "$ref": "#/components/schemas/CommentResourceCollection"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/mrsoft-news/public/api/comment": {
+            "get": {
+                "tags": [
+                    "Comment"
+                ],
+                "summary": "Get all comments",
+                "operationId": "06b2891082f112ff9228211b406d4c27",
+                "parameters": [
+                    {
+                        "name": "product",
+                        "in": "query",
+                        "description": "Product name",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "Gesrest",
+                                "360sys",
+                                "HotelHUB",
+                                "Comprobante-e",
+                                "Mr. Soft"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Limit of clients",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommentResourceCollection"
                                 }
                             }
                         }
@@ -386,7 +444,7 @@
                     },
                     "logo": {
                         "type": "string",
-                        "example": "http://localhost/storage/logo.png"
+                        "example": "https://develop.garzasoft.com/storage/logo.png"
                     }
                 },
                 "type": "object"
@@ -395,6 +453,40 @@
                 "type": "array",
                 "items": {
                     "$ref": "#/components/schemas/ClientResource"
+                }
+            },
+            "CommentResource": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "content": {
+                        "type": "string",
+                        "example": "Muy buena plataforma me facilita mucho para llevar..."
+                    },
+                    "person": {
+                        "type": "string",
+                        "example": "Jose Santos More Monja"
+                    },
+                    "position": {
+                        "type": "string",
+                        "example": "Administrador"
+                    },
+                    "producto": {
+                        "type": "string",
+                        "example": "Mr. Soft"
+                    },
+                    "cliente": {
+                        "$ref": "#/components/schemas/ClientResource"
+                    }
+                },
+                "type": "object"
+            },
+            "CommentResourceCollection": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/CommentResource"
                 }
             },
             "NewsRelatedResource": {
@@ -532,6 +624,10 @@
         {
             "name": "Client",
             "description": "Client"
+        },
+        {
+            "name": "Comment",
+            "description": "Comment"
         },
         {
             "name": "News",

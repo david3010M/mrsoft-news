@@ -6,12 +6,14 @@ namespace App\Providers;
 
 use App\Models\Category;
 use App\Models\Client;
+use App\Models\Comment;
 use App\Models\File;
 use App\Models\News;
 use App\Models\Product;
 use App\Models\Reel;
 use App\MoonShine\Resources\CategoryResource;
 use App\MoonShine\Resources\ClientResource;
+use App\MoonShine\Resources\CommentResource;
 use App\MoonShine\Resources\FileResource;
 use App\MoonShine\Resources\NewsResource;
 use App\MoonShine\Resources\ProductResource;
@@ -50,12 +52,14 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                     new MoonShineUserRoleResource()
                 ),
             ], 'heroicons.wrench'),
-            MenuGroup::make('Contenido', [
+            MenuGroup::make(
+                'Contenido', [
                 MenuItem::make('Noticias', new NewsResource(), 'heroicons.newspaper')->badge(fn() => (string)News::count()),
                 MenuItem::make('Reels', new ReelResource(), 'heroicons.outline.device-phone-mobile')->badge(fn() => (string)Reel::count()),
                 MenuItem::make('Categorias', new CategoryResource(), 'heroicons.outline.cube')->badge(fn() => (string)Category::count()),
                 MenuItem::make('Clientes', new ClientResource(), 'heroicons.outline.user-group')->badge(fn() => (string)Client::count()),
                 MenuItem::make('Productos', new ProductResource(), 'heroicons.outline.rocket-launch')->badge(fn() => (string)Product::count()),
+                MenuItem::make('Comentarios', new CommentResource(), 'heroicons.outline.chat-bubble-bottom-center-text')->badge(fn() => (string)Comment::count()),
                 MenuItem::make('Subir Archivos', new FileResource(), 'heroicons.cloud-arrow-up')->badge(fn() => (string)File::count()),
             ], 'heroicons.outline.folder'),
 //            MenuItem::make('Documentation', 'https://moonshine-laravel.com')

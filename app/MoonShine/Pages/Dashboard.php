@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\MoonShine\Pages;
 
 use App\Models\Category;
+use App\Models\Client;
 use App\Models\News;
 use App\Models\Product;
 use MoonShine\Decorations\Column;
@@ -37,7 +38,7 @@ class Dashboard extends Page
                 ])->columnSpan(6),
                 Column::make([
                     ValueMetric::make('Noticias')->value(News::count()),
-                    ValueMetric::make('Noticias')->value(News::count()),
+                    ValueMetric::make('Clientes')->value(Client::count()),
                 ])->columnSpan(6),
             ]),
 

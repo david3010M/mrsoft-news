@@ -54,7 +54,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 MenuItem::make('Noticias', new NewsResource(), 'heroicons.newspaper')->badge(fn() => (string)News::count()),
                 MenuItem::make('Reels', new ReelResource(), 'heroicons.outline.device-phone-mobile')->badge(fn() => (string)Reel::count()),
                 MenuItem::make('Categorias', new CategoryResource(), 'heroicons.outline.cube')->badge(fn() => (string)Category::count()),
-                MenuItem::make('Clientes', new ClientResource(), 'heroicons.outline.cube')->badge(fn() => (string)Client::count()),
+                MenuItem::make('Clientes', new ClientResource(), 'heroicons.outline.user-group')->badge(fn() => (string)Client::count()),
                 MenuItem::make('Productos', new ProductResource(), 'heroicons.outline.rocket-launch')->badge(fn() => (string)Product::count()),
                 MenuItem::make('Subir Archivos', new FileResource(), 'heroicons.cloud-arrow-up')->badge(fn() => (string)File::count()),
             ], 'heroicons.outline.folder'),

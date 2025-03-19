@@ -55,13 +55,16 @@ class ClientResource extends ModelResource
                     ->dir('clientes')
                     ->allowedExtensions(['png', 'jpg', 'jpeg', 'svg'])
                     ->keepOriginalFileName(),
+
             ]),
         ];
     }
 
     public function rules(Model $item): array
     {
-        return [];
+        return [
+            'logo' => ['nullable', 'image', 'max:130'],
+        ];
     }
 
     public function redirectAfterSave(): string

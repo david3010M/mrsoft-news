@@ -90,7 +90,31 @@ class NewsResource extends ModelResource
 
     public function rules(Model $item): array
     {
-        return [];
+        return [
+            // Imagen individual (máx. 130 KB)
+            'image' => ['nullable', 'image', 'max:130'],
+
+            // Lista de imágenes y videos
+            'images' => ['nullable', 'array'],
+            'images.*' => [
+                'nullable',
+                function ($attribute, $value, $fail) {
+                    if ($value instanceof \Illuminate\Http\UploadedFile) {
+                        $extension = $value->getClientOriginalExtension();
+                        $size = $value->getSize() / 1024; // Convertimos bytes a KB
+
+                        if (in_array($extension, ['png', 'jpg', 'jpeg', 'gif']) && $size > 130) {
+                            return $fail("Las imágenes y GIFs deben pesar máximo 130 KB.");
+                        }
+
+                        if (in_array($extension, ['mp4', 'avi']) && $size > 2048) {
+                            return $fail("Los videos deben pesar máximo 2 MB.");
+                        }
+                    }
+                },
+            ],
+        ];
+
     }
 
 

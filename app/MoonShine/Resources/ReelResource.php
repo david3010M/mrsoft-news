@@ -67,7 +67,9 @@ class ReelResource extends ModelResource
 
     public function rules(Model $item): array
     {
-        return [];
+        return [
+            'video' => ['nullable', 'mimes:mp4,mov,avi', 'max:2048'],
+        ];
     }
 
     public function redirectAfterSave(): string

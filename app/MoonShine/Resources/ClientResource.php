@@ -5,29 +5,24 @@ declare(strict_types=1);
 namespace App\MoonShine\Resources;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Reel;
+use App\Models\Client;
 
-use MoonShine\Fields\Date;
 use MoonShine\Fields\File;
-use MoonShine\Fields\Image;
 use MoonShine\Fields\Relationships\BelongsTo;
-use MoonShine\Fields\Select;
 use MoonShine\Fields\Switcher;
 use MoonShine\Fields\Text;
 use MoonShine\Fields\Textarea;
-use MoonShine\Fields\TinyMce;
 use MoonShine\Handlers\ExportHandler;
 use MoonShine\Handlers\ImportHandler;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
 
-class ReelResource extends ModelResource
+class ClientResource extends ModelResource
 {
-    protected string $model = Reel::class;
+    protected string $model = Client::class;
 
-    protected string $title = 'Reels';
-
+    protected string $title = 'Clientes';
     protected int $itemsPerPage = 4;
 
     public function export(): ?ExportHandler
@@ -54,12 +49,12 @@ class ReelResource extends ModelResource
                 ID::make()->hideOnIndex(),
                 Switcher::make('Activo', 'active'),
                 BelongsTo::make('Producto', 'product', fn($item) => "$item->name")->required()->searchable(),
-                Text::make('Título', 'title')->required(),
-                Textarea::make('Descripción', 'description')->required()->hideOnIndex(),
-                File::make('Video', 'video')
+                Text::make('Nombre', 'nombre')->required(),
+                Text::make('Dirección', 'direccion')->required()->hideOnIndex(),
+                File::make('Logo', 'logo')
                     ->removable()
-                    ->dir('reels')
-                    ->allowedExtensions(['mp4'])
+                    ->dir('clientes')
+                    ->allowedExtensions(['png', 'jpg', 'jpeg', 'svg'])
                     ->keepOriginalFileName(),
             ]),
         ];

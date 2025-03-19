@@ -45,6 +45,64 @@
                 }
             }
         },
+        "/mrsoft-news/public/api/client": {
+            "get": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Get all clients",
+                "operationId": "e73f3cdc353bdbb5e43d1b52f8a83f6b",
+                "parameters": [
+                    {
+                        "name": "product",
+                        "in": "query",
+                        "description": "Product name",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "Gesrest",
+                                "360sys",
+                                "HotelHUB",
+                                "Comprobante-e",
+                                "Mr. Soft"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Limit of clients",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ReelResourceCollection"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/mrsoft-news/public/api/news": {
             "get": {
                 "tags": [
@@ -312,6 +370,33 @@
                 },
                 "type": "object"
             },
+            "ClientResource": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "nombre": {
+                        "type": "string",
+                        "example": "News title"
+                    },
+                    "direccion": {
+                        "type": "string",
+                        "example": "News description"
+                    },
+                    "logo": {
+                        "type": "string",
+                        "example": "http://localhost/storage/logo.png"
+                    }
+                },
+                "type": "object"
+            },
+            "ClientResourceCollection": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/ClientResource"
+                }
+            },
             "NewsRelatedResource": {
                 "properties": {
                     "id": {
@@ -443,6 +528,10 @@
         {
             "name": "Category",
             "description": "Category"
+        },
+        {
+            "name": "Client",
+            "description": "Client"
         },
         {
             "name": "News",

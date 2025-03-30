@@ -594,7 +594,7 @@
                     },
                     "video": {
                         "type": "string",
-                        "example": "http://localhost/storage/video.mp4"
+                        "example": "https://develop.garzasoft.com/storage/video.mp4"
                     }
                 },
                 "type": "object"

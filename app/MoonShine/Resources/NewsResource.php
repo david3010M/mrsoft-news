@@ -55,7 +55,7 @@ class NewsResource extends ModelResource
         return [
             Block::make([
                 ID::make()->hideOnIndex(),
-                Switcher::make('Activo', 'active'),
+                Switcher::make('Activo', 'active')->default(true)->hideOnCreate(),
                 Date::make('Fecha', 'date')->required()->format('d-m-Y'),
                 BelongsTo::make('Producto', 'product', fn($item) => "$item->name")->required()->searchable(),
                 BelongsTo::make('Categoría', 'category', fn($item) => "$item->name")->required()->searchable(),
@@ -91,6 +91,14 @@ class NewsResource extends ModelResource
     public function rules(Model $item): array
     {
         return [
+            'date' => ['required', 'date'],
+            'product_id' => ['required'],
+            'category_id' => ['required'],
+            'title' => ['required'],
+            'description' => ['required'],
+            'typeMedia' => ['required'],
+            'content' => ['required'],
+
             // Imagen individual (máx. 130 KB)
             'image' => ['nullable', 'image', 'max:130'],
 

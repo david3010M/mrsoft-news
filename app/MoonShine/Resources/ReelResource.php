@@ -67,7 +67,7 @@ class ReelResource extends ModelResource
     public function rules(Model $item): array
     {
         return [
-            'order' => ['required', 'integer', 'min:1', Rule::unique('reels', 'order')->ignore($item->id)],
+            'order' => ['required', 'integer', 'min:1', Rule::unique('reels', 'order')->where('active', true)->ignore($item->id)],
             'video' => [
                 $item->exists ? 'nullable' : 'required', // Requerido al crear, nullable al editar
                 'mimes:mp4,mov,avi',

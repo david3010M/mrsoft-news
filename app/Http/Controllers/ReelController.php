@@ -26,7 +26,7 @@ class ReelController extends Controller
         $reels = Reel::with('product')
             ->where('active', true)
             ->whereHas('product', fn($query) => $query->where('name', $product))
-            ->orderBy('created_at', 'desc');
+            ->orderBy('order');
         if ($request->has('limit')) $reels->limit($request->input('limit'));
         return response()->json(ReelResource::collection($reels->get()));
     }

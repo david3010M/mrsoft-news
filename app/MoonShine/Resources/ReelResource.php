@@ -7,15 +7,13 @@ namespace App\MoonShine\Resources;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Reel;
 
-use MoonShine\Fields\Date;
+use Illuminate\Validation\Rule;
 use MoonShine\Fields\File;
-use MoonShine\Fields\Image;
 use MoonShine\Fields\Relationships\BelongsTo;
-use MoonShine\Fields\Select;
 use MoonShine\Fields\Switcher;
 use MoonShine\Fields\Text;
 use MoonShine\Fields\Textarea;
-use MoonShine\Fields\TinyMce;
+use MoonShine\Fields\Number;
 use MoonShine\Handlers\ExportHandler;
 use MoonShine\Handlers\ImportHandler;
 use MoonShine\Resources\ModelResource;
@@ -52,9 +50,10 @@ class ReelResource extends ModelResource
         return [
             Block::make([
                 ID::make()->hideOnIndex(),
-                Switcher::make('Activo', 'active'),
+                Switcher::make('Activo', 'active')->default(true)->hideOnCreate(),
                 BelongsTo::make('Producto', 'product', fn($item) => "$item->name")->required()->searchable(),
                 Text::make('Título', 'title')->required(),
+                Number::make('Orden', 'order')->required()->default(Reel::max('order') + 1),
                 Textarea::make('Descripción', 'description')->required()->hideOnIndex(),
                 File::make('Video', 'video')
                     ->removable()
@@ -68,9 +67,15 @@ class ReelResource extends ModelResource
     public function rules(Model $item): array
     {
         return [
-            'video' => ['nullable', 'mimes:mp4,mov,avi', 'max:2048'],
+            'order' => ['required', 'integer', 'min:1', Rule::unique('reels', 'order')->ignore($item->id)],
+            'video' => [
+                $item->exists ? 'nullable' : 'required', // Requerido al crear, nullable al editar
+                'mimes:mp4,mov,avi',
+                'max:2048',
+            ],
         ];
     }
+
 
     public function redirectAfterSave(): string
     {

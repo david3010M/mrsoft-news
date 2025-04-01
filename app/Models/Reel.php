@@ -14,6 +14,7 @@ class Reel extends Model
         'description',
         'video',
         'active',
+        'order',
         'product_id'
     ];
 

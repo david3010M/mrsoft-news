@@ -50,7 +50,7 @@ class ReelResource extends ModelResource
         return [
             Block::make([
                 ID::make()->hideOnIndex(),
-                Switcher::make('Activo', 'active')->default(true)->hideOnCreate(),
+                Switcher::make('Activo', 'active')->default(true),
                 BelongsTo::make('Producto', 'product', fn($item) => "$item->name")->required()->searchable(),
                 Text::make('Título', 'title')->required(),
                 Number::make('Orden', 'order')->required()->default(Reel::max('order') + 1),

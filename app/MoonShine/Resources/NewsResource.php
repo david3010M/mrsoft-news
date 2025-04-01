@@ -55,7 +55,7 @@ class NewsResource extends ModelResource
         return [
             Block::make([
                 ID::make()->hideOnIndex(),
-                Switcher::make('Activo', 'active')->default(true)->hideOnCreate(),
+                Switcher::make('Activo', 'active')->default(true),
                 Date::make('Fecha', 'date')->required()->format('d-m-Y'),
                 BelongsTo::make('Producto', 'product', fn($item) => "$item->name")->required()->searchable(),
                 BelongsTo::make('Categoría', 'category', fn($item) => "$item->name")->required()->searchable(),

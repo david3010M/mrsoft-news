@@ -5,6 +5,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ReelController;
+use App\Http\Controllers\TypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -37,3 +38,6 @@ Route::resource('client', ClientController::class)->only(['index', 'show', 'stor
 
 Route::resource('comment', CommentController::class)->only(['index', 'show', 'store', 'update', 'destroy'])
     ->names(['index' => 'comment.index', 'store' => 'comment.store', 'show' => 'comment.show', 'update' => 'comment.update', 'destroy' => 'comment.destroy']);
+
+Route::resource('type', TypeController::class)->only(['index', 'show', 'store', 'update', 'destroy'])
+    ->names(['index' => 'type.index', 'store' => 'type.store', 'show' => 'type.show', 'update' => 'type.update', 'destroy' => 'type.destroy']);

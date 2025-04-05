@@ -2,36 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\IndexClientRequest;
-use App\Http\Requests\IndexReelRequest;
-use App\Http\Resources\ClientResource;
-use App\Http\Resources\ReelResource;
-use App\Models\Client;
-use App\Models\Reel;
+use App\Http\Requests\IndexTypeRequest;
+use App\Http\Resources\TypeResource;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
-class ClientController extends Controller
+class TypeController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/mrsoft-news/public/api/client",
-     *     summary="Get all clients",
-     *     tags={"Client"},
+     *     path="/mrsoft-news/public/api/type",
+     *     summary="Get all types",
+     *     tags={"Type"},
      *     @OA\Parameter(name="product", in="query", required=true, description="Product name", @OA\Schema(type="string", enum={"Gesrest", "360sys", "HotelHUB", "Comprobante-e", "Mr. Soft"})),
-     *     @OA\Parameter(name="limit", in="query", required=false, description="Limit of clients", @OA\Schema(type="integer")),
-     *     @OA\Response(response="200", description="Success", @OA\JsonContent(ref="#/components/schemas/CommentResourceCollection")),
+     *     @OA\Parameter(name="limit", in="query", required=false, description="Limit of types", @OA\Schema(type="integer")),
+     *     @OA\Response(response="200", description="Success", @OA\JsonContent(ref="#/components/schemas/TypeResourceCollection")),
      *     @OA\Response(response="401", description="Unauthenticated", @OA\JsonContent(ref="#/components/schemas/Unauthenticated"))
      * )
      */
-    public function index(IndexClientRequest $request)
+    public function index(IndexTypeRequest $request)
     {
         $product = $request->query('product');
-        $clients = Client::with('type.product')
+        $types = Type::with('product')
             ->where('active', true)
-            ->whereHas('type.product', fn($query) => $query->where('name', $product))
+            ->whereHas('product', fn($query) => $query->where('name', $product))
             ->orderBy('created_at', 'desc');
-        if ($request->has('limit')) $clients->limit($request->input('limit'));
-        return response()->json(ClientResource::collection($clients->get()));
+        if ($request->has('limit')) $types->limit($request->input('limit'));
+        return response()->json(TypeResource::collection($types->get()));
     }
 
     /**
@@ -53,7 +50,7 @@ class ClientController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Client $client)
+    public function show(Type $type)
     {
         //
     }
@@ -61,7 +58,7 @@ class ClientController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Client $client)
+    public function edit(Type $type)
     {
         //
     }
@@ -69,7 +66,7 @@ class ClientController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Client $client)
+    public function update(Request $request, Type $type)
     {
         //
     }
@@ -77,7 +74,7 @@ class ClientController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Client $client)
+    public function destroy(Type $type)
     {
         //
     }

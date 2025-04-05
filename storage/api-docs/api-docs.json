@@ -332,6 +332,64 @@
                     }
                 }
             }
+        },
+        "/mrsoft-news/public/api/type": {
+            "get": {
+                "tags": [
+                    "Type"
+                ],
+                "summary": "Get all types",
+                "operationId": "8b343f14e5a744fefbb5a6c2a1ee4505",
+                "parameters": [
+                    {
+                        "name": "product",
+                        "in": "query",
+                        "description": "Product name",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "Gesrest",
+                                "360sys",
+                                "HotelHUB",
+                                "Comprobante-e",
+                                "Mr. Soft"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Limit of types",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TypeResourceCollection"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthenticated"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -445,6 +503,26 @@
                     "logo": {
                         "type": "string",
                         "example": "https://develop.garzasoft.com/storage/logo.png"
+                    },
+                    "departamento": {
+                        "type": "string",
+                        "example": "News description"
+                    },
+                    "imagen_referencia": {
+                        "type": "string",
+                        "example": "https://develop.garzasoft.com/storage/logo.png"
+                    },
+                    "flyer_bienvenida": {
+                        "type": "string",
+                        "example": "https://develop.garzasoft.com/storage/logo.png"
+                    },
+                    "flyer_informativo": {
+                        "type": "string",
+                        "example": "https://develop.garzasoft.com/storage/logo.png"
+                    },
+                    "type": {
+                        "type": "string",
+                        "example": "News description"
                     }
                 },
                 "type": "object"
@@ -604,6 +682,29 @@
                 "items": {
                     "$ref": "#/components/schemas/ReelResource"
                 }
+            },
+            "TypeResource": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Tipo de prueba"
+                    },
+                    "product": {
+                        "type": "string",
+                        "example": "Gesrest"
+                    }
+                },
+                "type": "object"
+            },
+            "TypeResourceCollection": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/TypeResource"
+                }
             }
         },
         "securitySchemes": {
@@ -636,6 +737,10 @@
         {
             "name": "Reel",
             "description": "Reel"
+        },
+        {
+            "name": "Type",
+            "description": "Type"
         }
     ]
 }

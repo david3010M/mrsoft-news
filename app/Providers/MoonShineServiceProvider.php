@@ -11,6 +11,7 @@ use App\Models\File;
 use App\Models\News;
 use App\Models\Product;
 use App\Models\Reel;
+use App\Models\Type;
 use App\MoonShine\Resources\CategoryResource;
 use App\MoonShine\Resources\ClientResource;
 use App\MoonShine\Resources\CommentResource;
@@ -18,6 +19,7 @@ use App\MoonShine\Resources\FileResource;
 use App\MoonShine\Resources\NewsResource;
 use App\MoonShine\Resources\ProductResource;
 use App\MoonShine\Resources\ReelResource;
+use App\MoonShine\Resources\TypeResource;
 use MoonShine\ActionButtons\ActionButton;
 use MoonShine\Providers\MoonShineApplicationServiceProvider;
 use MoonShine\MoonShine;
@@ -59,6 +61,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 MenuItem::make('Categorias', new CategoryResource(), 'heroicons.outline.cube')->badge(fn() => (string)Category::count()),
                 MenuItem::make('Clientes', new ClientResource(), 'heroicons.outline.user-group')->badge(fn() => (string)Client::count()),
                 MenuItem::make('Productos', new ProductResource(), 'heroicons.outline.rocket-launch')->badge(fn() => (string)Product::count()),
+                MenuItem::make('Tipos', new TypeResource(), 'heroicons.finger-print')->badge(fn() => (string)Type::count()),
                 MenuItem::make('Comentarios', new CommentResource(), 'heroicons.outline.chat-bubble-bottom-center-text')->badge(fn() => (string)Comment::count()),
                 MenuItem::make('Subir Archivos', new FileResource(), 'heroicons.cloud-arrow-up')->badge(fn() => (string)File::count()),
             ], 'heroicons.outline.folder'),

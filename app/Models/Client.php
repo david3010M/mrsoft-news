@@ -14,11 +14,15 @@ class Client extends Model
         'direccion',
         'logo',
         'active',
-        'product_id'
+        'type_id',
+        'departamento',
+        'imagen_referencia',
+        'flyer_bienvenida',
+        'flyer_informativo',
     ];
 
-    public function product()
+    public function type()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Type::class);
     }
 }

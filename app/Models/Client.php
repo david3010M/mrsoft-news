@@ -25,4 +25,9 @@ class Client extends Model
     {
         return $this->belongsTo(Type::class);
     }
+
+    public function comment()
+    {
+        return $this->hasOne(Comment::class)->where('active', true);
+    }
 }

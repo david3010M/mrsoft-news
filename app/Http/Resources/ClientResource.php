@@ -41,6 +41,11 @@ class ClientResource extends JsonResource
             'flyer_bienvenida' => $this->flyer_bienvenida ? asset('storage/' . $this->flyer_bienvenida) : null,
             'flyer_informativo' => $this->flyer_informativo ? asset('storage/' . $this->flyer_informativo) : null,
             'type' => $this->type?->name,
+            'comment' => $this->comment ? [
+                'text' => $this->comment->content,
+                'author' => $this->comment->person,
+                'position' => $this->comment->position,
+            ] : null,
         ];
     }
 }

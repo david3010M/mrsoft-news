@@ -4,17 +4,21 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Models\Address;
 use App\Models\Category;
 use App\Models\Client;
 use App\Models\Comment;
+use App\Models\Department;
 use App\Models\File;
 use App\Models\News;
 use App\Models\Product;
 use App\Models\Reel;
 use App\Models\Type;
+use App\MoonShine\Resources\AddressResource;
 use App\MoonShine\Resources\CategoryResource;
 use App\MoonShine\Resources\ClientResource;
 use App\MoonShine\Resources\CommentResource;
+use App\MoonShine\Resources\DepartmentResource;
 use App\MoonShine\Resources\FileResource;
 use App\MoonShine\Resources\NewsResource;
 use App\MoonShine\Resources\ProductResource;
@@ -60,8 +64,10 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 MenuItem::make('Reels', new ReelResource(), 'heroicons.outline.device-phone-mobile')->badge(fn() => (string)Reel::count()),
                 MenuItem::make('Categorias', new CategoryResource(), 'heroicons.outline.cube')->badge(fn() => (string)Category::count()),
                 MenuItem::make('Clientes', new ClientResource(), 'heroicons.outline.user-group')->badge(fn() => (string)Client::count()),
+                MenuItem::make('Direcciones', new AddressResource(), 'heroicons.map-pin')->badge(fn() => (string)Address::count()),
                 MenuItem::make('Productos', new ProductResource(), 'heroicons.outline.rocket-launch')->badge(fn() => (string)Product::count()),
                 MenuItem::make('Tipos', new TypeResource(), 'heroicons.finger-print')->badge(fn() => (string)Type::count()),
+                MenuItem::make('Departamentos', new DepartmentResource(), 'heroicons.finger-print')->badge(fn() => (string)Department::count()),
                 MenuItem::make('Comentarios', new CommentResource(), 'heroicons.outline.chat-bubble-bottom-center-text')->badge(fn() => (string)Comment::count()),
                 MenuItem::make('Subir Archivos', new FileResource(), 'heroicons.cloud-arrow-up')->badge(fn() => (string)File::count()),
             ], 'heroicons.outline.folder'),

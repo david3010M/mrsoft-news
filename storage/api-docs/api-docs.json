@@ -486,6 +486,25 @@
                 },
                 "type": "object"
             },
+            "AddressResource": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Address name"
+                    }
+                },
+                "type": "object"
+            },
+            "AddressResourceCollection": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/AddressResource"
+                }
+            },
             "ClientResource": {
                 "properties": {
                     "id": {
@@ -523,6 +542,29 @@
                     "type": {
                         "type": "string",
                         "example": "News description"
+                    },
+                    "comment": {
+                        "properties": {
+                            "text": {
+                                "type": "string",
+                                "example": "News description"
+                            },
+                            "author": {
+                                "type": "string",
+                                "example": "News description"
+                            },
+                            "position": {
+                                "type": "string",
+                                "example": "News description"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "departments": {
+                        "$ref": "#/components/schemas/DepartmentResourceCollection"
+                    },
+                    "addresses": {
+                        "$ref": "#/components/schemas/AddressResourceCollection"
                     }
                 },
                 "type": "object"
@@ -565,6 +607,25 @@
                 "type": "array",
                 "items": {
                     "$ref": "#/components/schemas/CommentResource"
+                }
+            },
+            "DepartmentResource": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Department name"
+                    }
+                },
+                "type": "object"
+            },
+            "DepartmentResourceCollection": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/DepartmentResource"
                 }
             },
             "NewsRelatedResource": {

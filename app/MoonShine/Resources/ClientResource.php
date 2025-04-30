@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Resources;
 
+use App\Models\Department;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Client;
 
+use MoonShine\Enums\PageType;
 use MoonShine\Fields\File;
 use MoonShine\Fields\Image;
 use MoonShine\Fields\Relationships\BelongsTo;
+use MoonShine\Fields\Relationships\HasMany;
 use MoonShine\Fields\Select;
 use MoonShine\Fields\Switcher;
 use MoonShine\Fields\Text;
@@ -19,34 +22,6 @@ use MoonShine\Handlers\ImportHandler;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
-
-const DEPARTAMENTOS = [
-    'Amazonas' => 'Amazonas',
-    'Áncash' => 'Áncash',
-    'Apurímac' => 'Apurímac',
-    'Arequipa' => 'Arequipa',
-    'Ayacucho' => 'Ayacucho',
-    'Cajamarca' => 'Cajamarca',
-    'Callao' => 'Callao',
-    'Cusco' => 'Cusco',
-    'Huancavelica' => 'Huancavelica',
-    'Huánuco' => 'Huánuco',
-    'Ica' => 'Ica',
-    'Junín' => 'Junín',
-    'La Libertad' => 'La Libertad',
-    'Lambayeque' => 'Lambayeque',
-    'Lima' => 'Lima',
-    'Loreto' => 'Loreto',
-    'Madre de Dios' => 'Madre de Dios',
-    'Moquegua' => 'Moquegua',
-    'Pasco' => 'Pasco',
-    'Piura' => 'Piura',
-    'Puno' => 'Puno',
-    'San Martín' => 'San Martín',
-    'Tacna' => 'Tacna',
-    'Tumbes' => 'Tumbes',
-    'Ucayali' => 'Ucayali',
-];
 
 class ClientResource extends ModelResource
 {
@@ -68,12 +43,6 @@ class ClientResource extends ModelResource
     {
         return [
             BelongsTo::make('Tipos', 'type', fn($item) => "$item->name - {$item->product['name']}")->required()->searchable(),
-//            departamento
-            Select::make('Departamento', 'departamento')
-                ->options(DEPARTAMENTOS)
-                ->searchable()
-                ->multiple()
-                ->placeholder('Seleccionar departamento'),
 
         ];
     }
@@ -86,19 +55,17 @@ class ClientResource extends ModelResource
                 Switcher::make('Activo', 'active')->default(true),
                 BelongsTo::make('Tipo', 'type', fn($item) => $item && $item->product ? "$item->name - {$item->product['name']}" : "$item->name")->required()->searchable(),
                 Text::make('Nombre', 'nombre')->required(),
-                Text::make('Dirección', 'direccion')->required()->hideOnIndex(),
 //                File::make('Logo', 'logo')
 //                    ->removable()
 //                    ->dir('clientes')
 //                    ->allowedExtensions(['png', 'jpg', 'jpeg', 'svg'])
 //                    ->keepOriginalFileName(),
+                HasMany::make('Direcciones', 'addresses', resource: new AddressResource())->hideOnIndex()->creatable(),
                 Image::make('Logo', 'logo')
                     ->removable()
                     ->dir('clientes')
                     ->allowedExtensions(['png', 'jpg', 'jpeg', 'svg'])
                     ->keepOriginalFileName(),
-                Select::make('Departamento', 'departamento')
-                    ->options(DEPARTAMENTOS)->required(),
                 Image::make('Imagen de referencia', 'imagen_referencia')
                     ->removable()
                     ->dir('clientes')
@@ -125,17 +92,18 @@ class ClientResource extends ModelResource
     {
         return [
             'logo' => ['nullable', 'image', 'max:130'],
-            'departamento' => ['required'],
             'imagen_referencia' => ['nullable', 'image', 'max:130'],
             'flyer_bienvenida' => ['nullable', 'image', 'max:130'],
             'flyer_informativo' => ['nullable', 'image', 'max:130'],
         ];
     }
 
-    public function redirectAfterSave(): string
-    {
-        return $this->url();
-    }
+    protected ?PageType $redirectAfterSave = PageType::DETAIL;
+
+//    public function redirectAfterSave(): string
+//    {
+//        return $this->route('show', $this->getItem()->id);
+//    }
 
     public function redirectAfterDelete(): string
     {

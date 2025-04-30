@@ -30,4 +30,21 @@ class Client extends Model
     {
         return $this->hasOne(Comment::class)->where('active', true);
     }
+
+    public function addresses()
+    {
+        return $this->hasMany(Address::class);
+    }
+
+    public function departments()
+    {
+        return $this->hasManyThrough(
+            Department::class,
+            Address::class,
+            'client_id',
+            'id',
+            'id',
+            'department_id'
+        )->distinct();
+    }
 }

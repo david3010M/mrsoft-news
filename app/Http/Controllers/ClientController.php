@@ -26,7 +26,7 @@ class ClientController extends Controller
     public function index(IndexClientRequest $request)
     {
         $product = $request->query('product');
-        $clients = Client::with('type.product')
+        $clients = Client::with('type.product', 'comment', 'addresses.department', 'departments')
             ->where('active', true)
             ->whereHas('type.product', fn($query) => $query->where('name', $product))
             ->orderBy('created_at', 'desc');

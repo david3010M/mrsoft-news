@@ -67,7 +67,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 MenuItem::make('Direcciones', new AddressResource(), 'heroicons.map-pin')->badge(fn() => (string)Address::count()),
                 MenuItem::make('Productos', new ProductResource(), 'heroicons.outline.rocket-launch')->badge(fn() => (string)Product::count()),
                 MenuItem::make('Tipos', new TypeResource(), 'heroicons.finger-print')->badge(fn() => (string)Type::count()),
-                MenuItem::make('Departamentos', new DepartmentResource(), 'heroicons.finger-print')->badge(fn() => (string)Department::count()),
+                MenuItem::make('Departamentos', new DepartmentResource(), 'heroicons.map')->badge(fn() => (string)Department::count()),
                 MenuItem::make('Comentarios', new CommentResource(), 'heroicons.outline.chat-bubble-bottom-center-text')->badge(fn() => (string)Comment::count()),
                 MenuItem::make('Subir Archivos', new FileResource(), 'heroicons.cloud-arrow-up')->badge(fn() => (string)File::count()),
             ], 'heroicons.outline.folder'),

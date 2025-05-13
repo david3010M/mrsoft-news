@@ -71,7 +71,7 @@ class ReelResource extends ModelResource
             'video' => [
                 $item->exists ? 'nullable' : 'required', // Requerido al crear, nullable al editar
                 'mimes:mp4,mov,avi',
-                'max:2048',
+                'max:10240',
             ],
         ];
     }

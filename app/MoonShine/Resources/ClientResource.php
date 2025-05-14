@@ -22,7 +22,7 @@ class ClientResource extends ModelResource
 {
     protected string $model = Client::class;
     protected string $title = 'Clientes';
-    protected int $itemsPerPage = 4;
+    protected int $itemsPerPage = 20;
 
     public function export(): ?ExportHandler
     {

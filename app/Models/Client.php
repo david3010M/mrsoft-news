@@ -11,14 +11,19 @@ class Client extends Model
 
     protected $fillable = [
         'nombre',
-        'direccion',
-        'logo',
         'active',
         'type_id',
-        'departamento',
+        'logo',
         'imagen_referencia',
         'flyer_bienvenida',
         'flyer_informativo',
+    ];
+
+    protected $hidden = [
+        'direccion',
+        'departamento',
+        'created_at',
+        'updated_at',
     ];
 
     public function type()

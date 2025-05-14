@@ -91,10 +91,10 @@ class ClientResource extends ModelResource
     public function rules(Model $item): array
     {
         return [
-            'logo' => ['nullable', 'image', 'max:130'],
-            'imagen_referencia' => ['nullable', 'image', 'max:130'],
-            'flyer_bienvenida' => ['nullable', 'image', 'max:130'],
-            'flyer_informativo' => ['nullable', 'image', 'max:130'],
+            'logo' => ['nullable', 'image', 'max:10240'],
+            'imagen_referencia' => ['nullable', 'image', 'max:10240'],
+            'flyer_bienvenida' => ['nullable', 'image', 'max:10240'],
+            'flyer_informativo' => ['nullable', 'image', 'max:10240'],
         ];
     }
 

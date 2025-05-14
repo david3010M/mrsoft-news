@@ -100,7 +100,7 @@ class NewsResource extends ModelResource
             'content' => ['required'],
 
             // Imagen individual (máx. 130 KB)
-            'image' => ['nullable', 'image', 'max:130'],
+            'image' => ['nullable', 'image', 'max:10240'],
 
             // Lista de imágenes y videos
             'images' => ['nullable', 'array'],
@@ -111,12 +111,12 @@ class NewsResource extends ModelResource
                         $extension = $value->getClientOriginalExtension();
                         $size = $value->getSize() / 1024; // Convertimos bytes a KB
 
-                        if (in_array($extension, ['png', 'jpg', 'jpeg', 'gif']) && $size > 130) {
-                            return $fail("Las imágenes y GIFs deben pesar máximo 130 KB.");
+                        if (in_array($extension, ['png', 'jpg', 'jpeg', 'gif']) && $size > 10240) {
+                            return $fail("Las imágenes y GIFs deben pesar máximo 10 MB.");
                         }
 
-                        if (in_array($extension, ['mp4', 'avi']) && $size > 2048) {
-                            return $fail("Los videos deben pesar máximo 2 MB.");
+                        if (in_array($extension, ['mp4', 'avi']) && $size > 10240) {
+                            return $fail("Los videos deben pesar máximo 10 MB.");
                         }
                     }
                 },

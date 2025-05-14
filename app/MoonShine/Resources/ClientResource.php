@@ -4,19 +4,14 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Resources;
 
-use App\Models\Department;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Client;
-
 use MoonShine\Enums\PageType;
-use MoonShine\Fields\File;
 use MoonShine\Fields\Image;
 use MoonShine\Fields\Relationships\BelongsTo;
 use MoonShine\Fields\Relationships\HasMany;
-use MoonShine\Fields\Select;
 use MoonShine\Fields\Switcher;
 use MoonShine\Fields\Text;
-use MoonShine\Fields\Textarea;
 use MoonShine\Handlers\ExportHandler;
 use MoonShine\Handlers\ImportHandler;
 use MoonShine\Resources\ModelResource;

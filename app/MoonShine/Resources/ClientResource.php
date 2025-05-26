@@ -42,6 +42,11 @@ class ClientResource extends ModelResource
         ];
     }
 
+    public function search(): array
+    {
+        return ['type.name', 'nombre'];
+    }
+
     public function fields(): array
     {
         return [

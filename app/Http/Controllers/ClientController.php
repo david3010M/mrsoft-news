@@ -26,13 +26,19 @@ class ClientController extends Controller
     public function index(IndexClientRequest $request)
     {
         $product = $request->query('product');
+        $isMrSoft = $product === 'Mr. Soft';
         $clients = Client::with('type.product', 'comment', 'addresses.department', 'departments')
-            ->where('active', true)
-            ->whereHas('type.product', fn($query) => $query->where('name', $product))
-            ->orderBy('created_at', 'desc');
-        if ($request->has('limit')) $clients->limit($request->input('limit'));
+            ->where('active', true);
+        if (!$isMrSoft) {
+            $clients->whereHas('type.product', fn($query) => $query->where('name', $product));
+        }
+        $clients->orderBy('created_at', 'desc');
+        if ($request->has('limit')) {
+            $clients->limit($request->input('limit'));
+        }
         return response()->json(ClientResource::collection($clients->get()));
     }
+
 
     /**
      * Show the form for creating a new resource.

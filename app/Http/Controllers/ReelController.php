@@ -23,11 +23,15 @@ class ReelController extends Controller
     public function index(IndexReelRequest $request)
     {
         $product = $request->query('product');
+        $isMrSoft = $product === 'Mr. Soft';
         $reels = Reel::with('product')
             ->where('active', true)
-            ->whereHas('product', fn($query) => $query->where('name', $product))
+            ->when(!$isMrSoft, function ($query) use ($product) {
+                $query->whereHas('product', fn($q) => $q->where('name', $product));
+            })
             ->orderBy('order');
-        if ($request->has('limit')) $reels->limit($request->input('limit'));
+        if ($request->has('limit'))
+            $reels->limit($request->input('limit'));
         return response()->json(ReelResource::collection($reels->get()));
     }
 

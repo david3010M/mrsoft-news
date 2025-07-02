@@ -8,7 +8,7 @@ class IndexClientRequest extends IndexRequest
 {
     public function rules(): array
     {
-        $namesProducts = Product::where('active', true)
+        $namesProducts = Product::all()
             ->pluck('name')
             ->toArray();
         return [

@@ -23,9 +23,14 @@ class CommentController extends Controller
     public function index(IndexCommentRequest $request)
     {
         $product = $request->query('product');
+        $isMrSoft = $product === 'Mr. Soft';
         $clients = Comment::with('product')
             ->where('active', true)
-            ->whereHas('product', fn($query) => $query->where('name', $product))
+            ->when(!$isMrSoft, function ($query) use ($product) {
+                return $query->whereHas('product', function ($q) use ($product) {
+                    $q->where('name', $product);
+                });
+            })
             ->orderBy('created_at', 'desc');
         if ($request->has('limit')) $clients->limit($request->input('limit'));
         return response()->json(CommentResource::collection($clients->get()));

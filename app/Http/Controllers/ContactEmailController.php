@@ -12,7 +12,7 @@ class ContactEmailController extends Controller
 {
     public function contact(ContactEmailRequest $request)
     {
-        Mail::to(["hvaldiviezos@unprg.edu.pe", "taatavlaald@gmail.com"])->send(new ContactEmail(
+        Mail::to(["hvaldiviezos@unprg.edu.pe", "martinampuero@hotmail.com", "alex_3849@hotmail.com"])->send(new ContactEmail(
             $request->ruc,
             $request->razon_social,
             $request->direccion,

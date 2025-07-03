@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ContactEmailController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ReelController;
 use App\Http\Controllers\TypeController;
@@ -41,3 +42,5 @@ Route::resource('comment', CommentController::class)->only(['index', 'show', 'st
 
 Route::resource('type', TypeController::class)->only(['index', 'show', 'store', 'update', 'destroy'])
     ->names(['index' => 'type.index', 'store' => 'type.store', 'show' => 'type.show', 'update' => 'type.update', 'destroy' => 'type.destroy']);
+
+Route::post('contact', [ContactEmailController::class, 'contact'])->name('contact.send');

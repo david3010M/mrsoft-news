@@ -9,6 +9,9 @@ class ContactEmailByValuesRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'primaryColor' => 'nullable|string',
+            'secondaryColor' => 'nullable|string',
+            'foreground' => 'nullable|string',
             'emails' => 'required|array',
             'emails.*' => 'required|email',
             'values' => 'required|array',

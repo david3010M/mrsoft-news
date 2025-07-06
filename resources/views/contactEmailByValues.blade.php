@@ -5,14 +5,14 @@
     <title>Contacto desde la web</title>
     <style>
         body {
-            background-color: #040931;
-            color: #ffffff;
+            background-color: {{$primaryColor}};
+            color: {{$foreground}};
             font-family: Arial, sans-serif;
             padding: 40px 20px;
         }
 
         h1 {
-            color: #040931;
+            color: {{$primaryColor}};
             text-align: center;
             margin-bottom: 30px;
         }
@@ -23,20 +23,20 @@
             margin: 0 auto;
             border-collapse: collapse;
             background-color: white;
-            border: 1px solid #5EBEB5;
+            border: 1px solid{{$secondaryColor}};
             overflow: hidden;
         }
 
         td {
             padding: 12px 16px;
             vertical-align: top;
-            border-bottom: 1px solid #5EBEB5;
+            border-bottom: 1px solid{{$secondaryColor}};
         }
 
         td.label {
             font-weight: bold;
-            background-color: #5EBEB5;
-            color: white;
+            background-color: {{$secondaryColor}};
+            color: {{$foreground}};
             width: 35%;
         }
 

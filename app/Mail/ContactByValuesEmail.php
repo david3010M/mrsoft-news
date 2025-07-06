@@ -15,15 +15,24 @@ class ContactByValuesEmail extends Mailable
     use Queueable, SerializesModels;
 
     public $values;
+    public $primaryColor;
+    public $secondaryColor;
+    public $foreground;
 
     /**
      * Create a new message instance.
      */
     public function __construct(
-        array $values
+        array  $values,
+        string $primaryColor = '#040931', // Default primary color
+        string $secondaryColor = '#5EBEB5', // Default secondary color
+        string $foreground = '#FFFFFF' // Default foreground color
     )
     {
         $this->values = $values;
+        $this->primaryColor = $primaryColor;
+        $this->secondaryColor = $secondaryColor;
+        $this->foreground = $foreground;
     }
 
     /**

@@ -35,7 +35,12 @@ class ContactEmailController extends Controller
     public function contactByValues(ContactEmailByValuesRequest $request)
     {
         $data = $request->validated();
-        Mail::to($data["emails"])->send(new ContactByValuesEmail($data["values"]));
+        Mail::to($data["emails"])->send(new ContactByValuesEmail(
+            $data["values"],
+            $data["primaryColor"],
+            $data["secondaryColor"],
+            $data["foreground"]
+        ));
 
         return response()->json(['message' => 'Email enviado correctamente',]);
     }

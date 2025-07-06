@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ContactEmailByValuesRequest;
 use App\Http\Requests\ContactEmailRequest;
 use App\Mail\ConfirmOrder;
+use App\Mail\ContactByValuesEmail;
 use App\Mail\ContactEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -28,5 +30,13 @@ class ContactEmailController extends Controller
             'message' => 'Email enviado correctamente',
         ], 200);
 
+    }
+
+    public function contactByValues(ContactEmailByValuesRequest $request)
+    {
+        $data = $request->validated();
+        Mail::to($data["emails"])->send(new ContactByValuesEmail($data["values"]));
+
+        return response()->json(['message' => 'Email enviado correctamente',]);
     }
 }

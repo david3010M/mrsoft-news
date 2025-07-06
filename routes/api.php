@@ -44,3 +44,4 @@ Route::resource('type', TypeController::class)->only(['index', 'show', 'store', 
     ->names(['index' => 'type.index', 'store' => 'type.store', 'show' => 'type.show', 'update' => 'type.update', 'destroy' => 'type.destroy']);
 
 Route::post('contact', [ContactEmailController::class, 'contact'])->name('contact.send');
+Route::post('contactByValues', [ContactEmailController::class, 'contactByValues'])->name('contactByValues.send');

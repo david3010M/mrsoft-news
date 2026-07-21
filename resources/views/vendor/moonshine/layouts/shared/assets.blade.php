@@ -26,7 +26,7 @@
     :root,
     :root.dark {
         --menu-link-color:    148, 163, 184;  /* slate-400 — texto sobre fondo oscuro */
-        --menu-hover-color:   34,  211, 238;  /* cyan-400  */
+        --menu-hover-color:   8,   145, 178;  /* cyan-600  */
         --menu-current-bg:    14,  116, 144;  /* cyan-700  */
         --menu-current-color: 255, 255, 255;  /* blanco    */
         --menu-dropdown-bg:   15,  23,  42;   /* slate-900 — dropdown sobre sidebar oscuro */
@@ -170,7 +170,7 @@
         font-size: 0.75rem !important;
         margin-top: 0.2rem !important;
     }
-    :root.dark .report-card-value { color: rgb(34, 211, 238) !important; }  /* cyan-400 dark */
+    :root.dark .report-card-value { color: rgb(8, 145, 178) !important; }   /* cyan-600 dark */
     :root.dark .report-card-title { color: #94a3b8 !important; }            /* slate-400 dark — visible en fondo oscuro */
 
     /* ══ CARDS — DARK (sobre slate-900) ══ */

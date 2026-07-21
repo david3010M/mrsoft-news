@@ -921,13 +921,13 @@
                 }
             }
         },
-        "/mrsoft-news/public/api/contact": {
+        "/api/contact": {
             "post": {
                 "tags": [
                     "Contact"
                 ],
                 "summary": "Send a contact form email",
-                "operationId": "d0cb8d4d5ecf044adeb029d769e65f19",
+                "operationId": "bc749962129af50f203b1defb75ada5e",
                 "requestBody": {
                     "required": true,
                     "content": {

@@ -81,7 +81,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
         return [
             'colors' => [
                 'primary'   => '14, 116, 144',   // cyan-700
-                'secondary' => '8, 145, 178',    // cyan-600
+                'secondary' => '234, 88, 12',    // orange-600
                 'body'      => '248, 250, 252',  // slate-50
                 'dark' => [
                     'DEFAULT' => '15, 23, 42',   // slate-900
@@ -98,8 +98,8 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 ],
             ],
             'darkColors' => [
-                'primary'   => '34, 211, 238',  // cyan-400
-                'secondary' => '8, 145, 178',   // cyan-600
+                'primary'   => '8, 145, 178',   // cyan-600
+                'secondary' => '234, 88, 12',   // orange-600
                 'body'      => '2, 6, 23',      // slate-950
             ],
         ];

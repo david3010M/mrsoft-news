@@ -17,12 +17,16 @@ use MoonShine\Handlers\ExportHandler;
 use MoonShine\Handlers\ImportHandler;
 use MoonShine\Metrics\ValueMetric;
 use MoonShine\Resources\ModelResource;
+use App\MoonShine\Traits\HasPerPageFilter;
 
 class ProductResource extends ModelResource
 {
+    use HasPerPageFilter;
+
     protected string $model = Product::class;
 
     protected string $title = 'Productos';
+    protected int $itemsPerPage = 10;
 
     protected bool $createInModal = true;
     protected bool $editInModal = true;
@@ -59,6 +63,13 @@ class ProductResource extends ModelResource
                 ID::make(),
                 Text::make('Nombre', 'name')->required(),
             ]),
+        ];
+    }
+
+    public function filters(): array
+    {
+        return [
+            $this->perPageSelect(),
         ];
     }
 

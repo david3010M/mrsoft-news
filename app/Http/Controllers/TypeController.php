@@ -40,7 +40,21 @@ class TypeController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @OA\Post(
+     *     path="/mrsoft-news/public/api/type",
+     *     summary="Create a new type",
+     *     tags={"Type"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"name"},
+     *             @OA\Property(property="name", type="string", example="Type name"),
+     *             @OA\Property(property="active", type="boolean", example=true)
+     *         )
+     *     ),
+     *     @OA\Response(response="201", description="Created", @OA\JsonContent(ref="#/components/schemas/TypeResourceCollection")),
+     *     @OA\Response(response="422", description="Validation error", @OA\JsonContent(ref="#/components/schemas/ValidationError"))
+     * )
      */
     public function store(Request $request)
     {
@@ -48,7 +62,16 @@ class TypeController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * @OA\Get(
+     *     path="/mrsoft-news/public/api/type/{id}",
+     *     summary="Get type by id",
+     *     tags={"Type"},
+     *     @OA\Parameter(name="id", in="path", required=true, description="Type id", @OA\Schema(type="integer")),
+     *     @OA\Response(response="200", description="Success", @OA\JsonContent(ref="#/components/schemas/TypeResourceCollection")),
+     *     @OA\Response(response="404", description="Not found", @OA\JsonContent(
+     *         @OA\Property(property="message", type="string", example="Type not found")
+     *     ))
+     * )
      */
     public function show(Type $type)
     {
@@ -64,7 +87,24 @@ class TypeController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * @OA\Put(
+     *     path="/mrsoft-news/public/api/type/{id}",
+     *     summary="Update a type",
+     *     tags={"Type"},
+     *     @OA\Parameter(name="id", in="path", required=true, description="Type id", @OA\Schema(type="integer")),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="name", type="string", example="Type name"),
+     *             @OA\Property(property="active", type="boolean", example=true)
+     *         )
+     *     ),
+     *     @OA\Response(response="200", description="Updated", @OA\JsonContent(ref="#/components/schemas/TypeResourceCollection")),
+     *     @OA\Response(response="404", description="Not found", @OA\JsonContent(
+     *         @OA\Property(property="message", type="string", example="Type not found")
+     *     )),
+     *     @OA\Response(response="422", description="Validation error", @OA\JsonContent(ref="#/components/schemas/ValidationError"))
+     * )
      */
     public function update(Request $request, Type $type)
     {
@@ -72,7 +112,18 @@ class TypeController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @OA\Delete(
+     *     path="/mrsoft-news/public/api/type/{id}",
+     *     summary="Delete a type",
+     *     tags={"Type"},
+     *     @OA\Parameter(name="id", in="path", required=true, description="Type id", @OA\Schema(type="integer")),
+     *     @OA\Response(response="200", description="Deleted", @OA\JsonContent(
+     *         @OA\Property(property="message", type="string", example="Type deleted successfully")
+     *     )),
+     *     @OA\Response(response="404", description="Not found", @OA\JsonContent(
+     *         @OA\Property(property="message", type="string", example="Type not found")
+     *     ))
+     * )
      */
     public function destroy(Type $type)
     {

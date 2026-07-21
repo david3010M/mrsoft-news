@@ -45,7 +45,23 @@ class CommentController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @OA\Post(
+     *     path="/mrsoft-news/public/api/comment",
+     *     summary="Create a new comment/testimonial",
+     *     tags={"Comment"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"content", "person"},
+     *             @OA\Property(property="content", type="string", example="Great product!"),
+     *             @OA\Property(property="person", type="string", example="John Doe"),
+     *             @OA\Property(property="position", type="string", example="CEO"),
+     *             @OA\Property(property="active", type="boolean", example=true)
+     *         )
+     *     ),
+     *     @OA\Response(response="201", description="Created", @OA\JsonContent(ref="#/components/schemas/CommentResource")),
+     *     @OA\Response(response="422", description="Validation error", @OA\JsonContent(ref="#/components/schemas/ValidationError"))
+     * )
      */
     public function store(Request $request)
     {
@@ -53,7 +69,16 @@ class CommentController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * @OA\Get(
+     *     path="/mrsoft-news/public/api/comment/{id}",
+     *     summary="Get comment by id",
+     *     tags={"Comment"},
+     *     @OA\Parameter(name="id", in="path", required=true, description="Comment id", @OA\Schema(type="integer")),
+     *     @OA\Response(response="200", description="Success", @OA\JsonContent(ref="#/components/schemas/CommentResource")),
+     *     @OA\Response(response="404", description="Not found", @OA\JsonContent(
+     *         @OA\Property(property="message", type="string", example="Comment not found")
+     *     ))
+     * )
      */
     public function show(Comment $comment)
     {
@@ -69,7 +94,26 @@ class CommentController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * @OA\Put(
+     *     path="/mrsoft-news/public/api/comment/{id}",
+     *     summary="Update a comment/testimonial",
+     *     tags={"Comment"},
+     *     @OA\Parameter(name="id", in="path", required=true, description="Comment id", @OA\Schema(type="integer")),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="content", type="string", example="Great product!"),
+     *             @OA\Property(property="person", type="string", example="John Doe"),
+     *             @OA\Property(property="position", type="string", example="CEO"),
+     *             @OA\Property(property="active", type="boolean", example=true)
+     *         )
+     *     ),
+     *     @OA\Response(response="200", description="Updated", @OA\JsonContent(ref="#/components/schemas/CommentResource")),
+     *     @OA\Response(response="404", description="Not found", @OA\JsonContent(
+     *         @OA\Property(property="message", type="string", example="Comment not found")
+     *     )),
+     *     @OA\Response(response="422", description="Validation error", @OA\JsonContent(ref="#/components/schemas/ValidationError"))
+     * )
      */
     public function update(Request $request, Comment $comment)
     {
@@ -77,7 +121,18 @@ class CommentController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @OA\Delete(
+     *     path="/mrsoft-news/public/api/comment/{id}",
+     *     summary="Delete a comment/testimonial",
+     *     tags={"Comment"},
+     *     @OA\Parameter(name="id", in="path", required=true, description="Comment id", @OA\Schema(type="integer")),
+     *     @OA\Response(response="200", description="Deleted", @OA\JsonContent(
+     *         @OA\Property(property="message", type="string", example="Comment deleted successfully")
+     *     )),
+     *     @OA\Response(response="404", description="Not found", @OA\JsonContent(
+     *         @OA\Property(property="message", type="string", example="Comment not found")
+     *     ))
+     * )
      */
     public function destroy(Comment $comment)
     {

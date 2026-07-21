@@ -16,15 +16,18 @@ use MoonShine\Handlers\ImportHandler;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
+use App\MoonShine\Traits\HasPerPageFilter;
 
 class CategoryResource extends ModelResource
 {
+    use HasPerPageFilter;
+
     protected string $model = Category::class;
     protected string $title = 'Categories';
     protected bool $createInModal = true;
     protected bool $editInModal = true;
     protected bool $detailInModal = true;
-    protected int $itemsPerPage = 4;
+    protected int $itemsPerPage = 10;
 
     public function export(): ?ExportHandler
     {
@@ -55,6 +58,13 @@ class CategoryResource extends ModelResource
     public function redirectAfterDelete(): string
     {
         return $this->url();
+    }
+
+    public function filters(): array
+    {
+        return [
+            $this->perPageSelect(),
+        ];
     }
 
     public function search(): array

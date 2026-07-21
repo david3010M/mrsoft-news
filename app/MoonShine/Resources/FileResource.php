@@ -13,12 +13,16 @@ use MoonShine\MoonShineUI;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
+use App\MoonShine\Traits\HasPerPageFilter;
 
 class FileResource extends ModelResource
 {
+    use HasPerPageFilter;
+
     protected string $model = File::class;
 
     protected string $title = 'Files';
+    protected int $itemsPerPage = 10;
 
     public function indexButtons(): array
     {
@@ -49,6 +53,13 @@ class FileResource extends ModelResource
         ];
     }
 
+
+    public function filters(): array
+    {
+        return [
+            $this->perPageSelect(),
+        ];
+    }
 
     public function rules(Model $item): array
     {

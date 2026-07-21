@@ -14,13 +14,16 @@ use MoonShine\Handlers\ImportHandler;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
+use App\MoonShine\Traits\HasPerPageFilter;
 
 class AddressResource extends ModelResource
 {
+    use HasPerPageFilter;
+
     protected string $model = Address::class;
 
     protected string $title = 'Direcciones';
-    protected int $itemsPerPage = 4;
+    protected int $itemsPerPage = 10;
 
     public function export(): ?ExportHandler
     {
@@ -34,7 +37,9 @@ class AddressResource extends ModelResource
 
     public function filters(): array
     {
-        return [];
+        return [
+            $this->perPageSelect(),
+        ];
     }
 
     public function fields(): array

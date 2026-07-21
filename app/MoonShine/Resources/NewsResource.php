@@ -25,13 +25,16 @@ use MoonShine\QueryTags\QueryTag;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
+use App\MoonShine\Traits\HasPerPageFilter;
 
 class NewsResource extends ModelResource
 {
+    use HasPerPageFilter;
+
     protected string $model = News::class;
 
     protected string $title = 'Noticias';
-    protected int $itemsPerPage = 4;
+    protected int $itemsPerPage = 10;
 
     public function export(): ?ExportHandler
     {
@@ -47,6 +50,7 @@ class NewsResource extends ModelResource
     {
         return [
             BelongsTo::make('Producto', 'product', fn($item) => "$item->name")->required()->searchable(),
+            $this->perPageSelect(),
         ];
     }
 

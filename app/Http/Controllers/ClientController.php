@@ -49,7 +49,23 @@ class ClientController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @OA\Post(
+     *     path="/mrsoft-news/public/api/client",
+     *     summary="Create a new client",
+     *     tags={"Client"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"name", "type_id"},
+     *             @OA\Property(property="name", type="string", example="Client name"),
+     *             @OA\Property(property="logo", type="string", example="logo.jpg"),
+     *             @OA\Property(property="type_id", type="integer", example=1),
+     *             @OA\Property(property="active", type="boolean", example=true)
+     *         )
+     *     ),
+     *     @OA\Response(response="201", description="Created", @OA\JsonContent(ref="#/components/schemas/CommentResourceCollection")),
+     *     @OA\Response(response="422", description="Validation error", @OA\JsonContent(ref="#/components/schemas/ValidationError"))
+     * )
      */
     public function store(Request $request)
     {
@@ -57,7 +73,16 @@ class ClientController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * @OA\Get(
+     *     path="/mrsoft-news/public/api/client/{id}",
+     *     summary="Get client by id",
+     *     tags={"Client"},
+     *     @OA\Parameter(name="id", in="path", required=true, description="Client id", @OA\Schema(type="integer")),
+     *     @OA\Response(response="200", description="Success", @OA\JsonContent(ref="#/components/schemas/CommentResourceCollection")),
+     *     @OA\Response(response="404", description="Not found", @OA\JsonContent(
+     *         @OA\Property(property="message", type="string", example="Client not found")
+     *     ))
+     * )
      */
     public function show(Client $client)
     {
@@ -73,7 +98,26 @@ class ClientController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * @OA\Put(
+     *     path="/mrsoft-news/public/api/client/{id}",
+     *     summary="Update a client",
+     *     tags={"Client"},
+     *     @OA\Parameter(name="id", in="path", required=true, description="Client id", @OA\Schema(type="integer")),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="name", type="string", example="Client name"),
+     *             @OA\Property(property="logo", type="string", example="logo.jpg"),
+     *             @OA\Property(property="type_id", type="integer", example=1),
+     *             @OA\Property(property="active", type="boolean", example=true)
+     *         )
+     *     ),
+     *     @OA\Response(response="200", description="Updated", @OA\JsonContent(ref="#/components/schemas/CommentResourceCollection")),
+     *     @OA\Response(response="404", description="Not found", @OA\JsonContent(
+     *         @OA\Property(property="message", type="string", example="Client not found")
+     *     )),
+     *     @OA\Response(response="422", description="Validation error", @OA\JsonContent(ref="#/components/schemas/ValidationError"))
+     * )
      */
     public function update(Request $request, Client $client)
     {
@@ -81,7 +125,18 @@ class ClientController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @OA\Delete(
+     *     path="/mrsoft-news/public/api/client/{id}",
+     *     summary="Delete a client",
+     *     tags={"Client"},
+     *     @OA\Parameter(name="id", in="path", required=true, description="Client id", @OA\Schema(type="integer")),
+     *     @OA\Response(response="200", description="Deleted", @OA\JsonContent(
+     *         @OA\Property(property="message", type="string", example="Client deleted successfully")
+     *     )),
+     *     @OA\Response(response="404", description="Not found", @OA\JsonContent(
+     *         @OA\Property(property="message", type="string", example="Client not found")
+     *     ))
+     * )
      */
     public function destroy(Client $client)
     {

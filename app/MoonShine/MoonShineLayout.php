@@ -14,16 +14,15 @@ final class MoonShineLayout implements MoonShineLayoutContract
     {
         return LayoutBuilder::make([
             Sidebar::make([
-                Menu::make()->customAttributes(['class' => 'mt-2']),
+                Menu::make()->customAttributes(['class' => 'mt-3 space-y-0.5']),
             ]),
             LayoutBlock::make([
                 Flash::make(),
                 Header::make(),
                 Content::make(),
-                Footer::make()->copyright(fn(): string => <<<'HTML'
-
-                    HTML
-                )->menu([]),
+                Footer::make()
+                    ->copyright(fn(): string => '')
+                    ->menu([]),
             ])->customAttributes(['class' => 'layout-page']),
         ]);
     }

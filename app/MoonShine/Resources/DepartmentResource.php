@@ -13,13 +13,16 @@ use MoonShine\Handlers\ImportHandler;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
+use App\MoonShine\Traits\HasPerPageFilter;
 
 class DepartmentResource extends ModelResource
 {
+    use HasPerPageFilter;
+
     protected string $model = Department::class;
 
     protected string $title = 'Departamentos';
-    protected int $itemsPerPage = 6;
+    protected int $itemsPerPage = 10;
 
     public function export(): ?ExportHandler
     {
@@ -34,7 +37,7 @@ class DepartmentResource extends ModelResource
     public function filters(): array
     {
         return [
-
+            $this->perPageSelect(),
         ];
     }
 

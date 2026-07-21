@@ -15,13 +15,16 @@ use MoonShine\Handlers\ImportHandler;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
+use App\MoonShine\Traits\HasPerPageFilter;
 
 class TypeResource extends ModelResource
 {
+    use HasPerPageFilter;
+
     protected string $model = Type::class;
 
     protected string $title = 'Tipos';
-    protected int $itemsPerPage = 4;
+    protected int $itemsPerPage = 10;
 
     public function export(): ?ExportHandler
     {
@@ -37,6 +40,7 @@ class TypeResource extends ModelResource
     {
         return [
             BelongsTo::make('Producto', 'product', fn($item) => "$item->name")->required()->searchable(),
+            $this->perPageSelect(),
         ];
     }
 

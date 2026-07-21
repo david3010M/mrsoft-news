@@ -19,14 +19,17 @@ use MoonShine\Handlers\ImportHandler;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
+use App\MoonShine\Traits\HasPerPageFilter;
 
 class ReelResource extends ModelResource
 {
+    use HasPerPageFilter;
+
     protected string $model = Reel::class;
 
     protected string $title = 'Reels';
 
-    protected int $itemsPerPage = 4;
+    protected int $itemsPerPage = 10;
 
     public function export(): ?ExportHandler
     {
@@ -42,6 +45,7 @@ class ReelResource extends ModelResource
     {
         return [
             BelongsTo::make('Producto', 'product', fn($item) => "$item->name")->required()->searchable(),
+            $this->perPageSelect(),
         ];
     }
 

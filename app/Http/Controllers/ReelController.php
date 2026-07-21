@@ -44,7 +44,23 @@ class ReelController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @OA\Post(
+     *     path="/mrsoft-news/public/api/reel",
+     *     summary="Create a new reel",
+     *     tags={"Reel"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"title", "url"},
+     *             @OA\Property(property="title", type="string", example="Reel title"),
+     *             @OA\Property(property="url", type="string", example="https://www.youtube.com/watch?v=..."),
+     *             @OA\Property(property="order", type="integer", example=1),
+     *             @OA\Property(property="active", type="boolean", example=true)
+     *         )
+     *     ),
+     *     @OA\Response(response="201", description="Created", @OA\JsonContent(ref="#/components/schemas/ReelResourceCollection")),
+     *     @OA\Response(response="422", description="Validation error", @OA\JsonContent(ref="#/components/schemas/ValidationError"))
+     * )
      */
     public function store(Request $request)
     {
@@ -52,7 +68,16 @@ class ReelController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * @OA\Get(
+     *     path="/mrsoft-news/public/api/reel/{id}",
+     *     summary="Get reel by id",
+     *     tags={"Reel"},
+     *     @OA\Parameter(name="id", in="path", required=true, description="Reel id", @OA\Schema(type="integer")),
+     *     @OA\Response(response="200", description="Success", @OA\JsonContent(ref="#/components/schemas/ReelResourceCollection")),
+     *     @OA\Response(response="404", description="Not found", @OA\JsonContent(
+     *         @OA\Property(property="message", type="string", example="Reel not found")
+     *     ))
+     * )
      */
     public function show(Reel $reel)
     {
@@ -68,7 +93,26 @@ class ReelController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * @OA\Put(
+     *     path="/mrsoft-news/public/api/reel/{id}",
+     *     summary="Update a reel",
+     *     tags={"Reel"},
+     *     @OA\Parameter(name="id", in="path", required=true, description="Reel id", @OA\Schema(type="integer")),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="title", type="string", example="Reel title"),
+     *             @OA\Property(property="url", type="string", example="https://www.youtube.com/watch?v=..."),
+     *             @OA\Property(property="order", type="integer", example=1),
+     *             @OA\Property(property="active", type="boolean", example=true)
+     *         )
+     *     ),
+     *     @OA\Response(response="200", description="Updated", @OA\JsonContent(ref="#/components/schemas/ReelResourceCollection")),
+     *     @OA\Response(response="404", description="Not found", @OA\JsonContent(
+     *         @OA\Property(property="message", type="string", example="Reel not found")
+     *     )),
+     *     @OA\Response(response="422", description="Validation error", @OA\JsonContent(ref="#/components/schemas/ValidationError"))
+     * )
      */
     public function update(Request $request, Reel $reel)
     {
@@ -76,7 +120,18 @@ class ReelController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @OA\Delete(
+     *     path="/mrsoft-news/public/api/reel/{id}",
+     *     summary="Delete a reel",
+     *     tags={"Reel"},
+     *     @OA\Parameter(name="id", in="path", required=true, description="Reel id", @OA\Schema(type="integer")),
+     *     @OA\Response(response="200", description="Deleted", @OA\JsonContent(
+     *         @OA\Property(property="message", type="string", example="Reel deleted successfully")
+     *     )),
+     *     @OA\Response(response="404", description="Not found", @OA\JsonContent(
+     *         @OA\Property(property="message", type="string", example="Reel not found")
+     *     ))
+     * )
      */
     public function destroy(Reel $reel)
     {

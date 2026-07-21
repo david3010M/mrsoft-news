@@ -36,7 +36,25 @@ class CategoryController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @OA\Post(
+     *     path="/mrsoft-news/public/api/category",
+     *     summary="Create a new category",
+     *     tags={"Category"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"name"},
+     *             @OA\Property(property="name", type="string", example="Category name"),
+     *             @OA\Property(property="description", type="string", example="Category description")
+     *         )
+     *     ),
+     *     @OA\Response(response="201", description="Created", @OA\JsonContent(
+     *         @OA\Property(property="id", type="integer", example=1),
+     *         @OA\Property(property="name", type="string", example="Category name"),
+     *         @OA\Property(property="description", type="string", example="Category description")
+     *     )),
+     *     @OA\Response(response="422", description="Validation error", @OA\JsonContent(ref="#/components/schemas/ValidationError"))
+     * )
      */
     public function store(Request $request)
     {
@@ -44,7 +62,20 @@ class CategoryController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * @OA\Get(
+     *     path="/mrsoft-news/public/api/category/{id}",
+     *     summary="Get category by id",
+     *     tags={"Category"},
+     *     @OA\Parameter(name="id", in="path", required=true, description="Category id", @OA\Schema(type="integer")),
+     *     @OA\Response(response="200", description="Success", @OA\JsonContent(
+     *         @OA\Property(property="id", type="integer", example=1),
+     *         @OA\Property(property="name", type="string", example="Category name"),
+     *         @OA\Property(property="description", type="string", example="Category description")
+     *     )),
+     *     @OA\Response(response="404", description="Not found", @OA\JsonContent(
+     *         @OA\Property(property="message", type="string", example="Category not found")
+     *     ))
+     * )
      */
     public function show(string $id)
     {
@@ -60,7 +91,28 @@ class CategoryController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * @OA\Put(
+     *     path="/mrsoft-news/public/api/category/{id}",
+     *     summary="Update a category",
+     *     tags={"Category"},
+     *     @OA\Parameter(name="id", in="path", required=true, description="Category id", @OA\Schema(type="integer")),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="name", type="string", example="Category name"),
+     *             @OA\Property(property="description", type="string", example="Category description")
+     *         )
+     *     ),
+     *     @OA\Response(response="200", description="Updated", @OA\JsonContent(
+     *         @OA\Property(property="id", type="integer", example=1),
+     *         @OA\Property(property="name", type="string", example="Category name"),
+     *         @OA\Property(property="description", type="string", example="Category description")
+     *     )),
+     *     @OA\Response(response="404", description="Not found", @OA\JsonContent(
+     *         @OA\Property(property="message", type="string", example="Category not found")
+     *     )),
+     *     @OA\Response(response="422", description="Validation error", @OA\JsonContent(ref="#/components/schemas/ValidationError"))
+     * )
      */
     public function update(Request $request, string $id)
     {
@@ -68,7 +120,18 @@ class CategoryController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @OA\Delete(
+     *     path="/mrsoft-news/public/api/category/{id}",
+     *     summary="Delete a category",
+     *     tags={"Category"},
+     *     @OA\Parameter(name="id", in="path", required=true, description="Category id", @OA\Schema(type="integer")),
+     *     @OA\Response(response="200", description="Deleted", @OA\JsonContent(
+     *         @OA\Property(property="message", type="string", example="Category deleted successfully")
+     *     )),
+     *     @OA\Response(response="404", description="Not found", @OA\JsonContent(
+     *         @OA\Property(property="message", type="string", example="Category not found")
+     *     ))
+     * )
      */
     public function destroy(string $id)
     {

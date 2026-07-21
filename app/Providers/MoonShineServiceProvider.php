@@ -76,15 +76,31 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
         ];
     }
 
-    /**
-     * @return array{css: string, colors: array, darkColors: array}
-     */
     protected function theme(): array
     {
         return [
             'colors' => [
-//                'primary' => 'rgb(20, 20, 20)',
-//                'secondary' => 'rgb(30, 30, 30)',
+                'primary'   => '14, 116, 144',   // cyan-700
+                'secondary' => '8, 145, 178',    // cyan-600
+                'body'      => '248, 250, 252',  // slate-50
+                'dark' => [
+                    'DEFAULT' => '15, 23, 42',   // slate-900
+                    50  => '248, 250, 252',       // slate-50
+                    100 => '241, 245, 249',       // slate-100
+                    200 => '226, 232, 240',       // slate-200
+                    300 => '203, 213, 225',       // slate-300
+                    400 => '148, 163, 184',       // slate-400
+                    500 => '100, 116, 139',       // slate-500
+                    600 => '71, 85, 105',         // slate-600
+                    700 => '51, 65, 85',          // slate-700
+                    800 => '30, 41, 59',          // slate-800
+                    900 => '2, 6, 23',            // slate-950
+                ],
+            ],
+            'darkColors' => [
+                'primary'   => '34, 211, 238',  // cyan-400
+                'secondary' => '8, 145, 178',   // cyan-600
+                'body'      => '2, 6, 23',      // slate-950
             ],
         ];
     }

@@ -36,33 +36,46 @@ class Dashboard extends Page
         return [
             Grid::make([
                 Column::make([
-                    ValueMetric::make('Noticias')->value(News::count()),
+                    ValueMetric::make('Noticias')
+                        ->icon('heroicons.newspaper')
+                        ->value(News::count()),
                 ])->columnSpan(3),
                 Column::make([
-                    ValueMetric::make('Reels')->value(Reel::count()),
+                    ValueMetric::make('Reels')
+                        ->icon('heroicons.outline.device-phone-mobile')
+                        ->value(Reel::count()),
                 ])->columnSpan(3),
                 Column::make([
-                    ValueMetric::make('Clientes')->value(Client::count()),
+                    ValueMetric::make('Clientes')
+                        ->icon('heroicons.outline.user-group')
+                        ->value(Client::count()),
                 ])->columnSpan(3),
                 Column::make([
-                    ValueMetric::make('Productos')->value(Product::count()),
-                ])->columnSpan(3),
-            ])->customAttributes(['class' => 'gap-4 mb-5']),
-
-            Grid::make([
-                Column::make([
-                    ValueMetric::make('Categorías')->value(Category::count()),
+                    ValueMetric::make('Productos')
+                        ->icon('heroicons.outline.rocket-launch')
+                        ->value(Product::count()),
                 ])->columnSpan(3),
                 Column::make([
-                    ValueMetric::make('Comentarios')->value(Comment::count()),
+                    ValueMetric::make('Categorías')
+                        ->icon('heroicons.outline.cube')
+                        ->value(Category::count()),
                 ])->columnSpan(3),
                 Column::make([
-                    ValueMetric::make('Departamentos')->value(Department::count()),
+                    ValueMetric::make('Comentarios')
+                        ->icon('heroicons.outline.chat-bubble-bottom-center-text')
+                        ->value(Comment::count()),
                 ])->columnSpan(3),
                 Column::make([
-                    ValueMetric::make('Tipos')->value(Type::count()),
+                    ValueMetric::make('Departamentos')
+                        ->icon('heroicons.map')
+                        ->value(Department::count()),
                 ])->columnSpan(3),
-            ])->customAttributes(['class' => 'gap-4 mb-5']),
+                Column::make([
+                    ValueMetric::make('Tipos')
+                        ->icon('heroicons.finger-print')
+                        ->value(Type::count()),
+                ])->columnSpan(3),
+            ])->customAttributes(['class' => 'gap-3 mb-4']),
 
             Grid::make([
                 Column::make([

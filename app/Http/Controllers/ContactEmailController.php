@@ -7,6 +7,7 @@ use App\Http\Requests\ContactEmailRequest;
 use App\Mail\ConfirmOrder;
 use App\Mail\ContactByValuesEmail;
 use App\Mail\ContactEmail;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -40,6 +41,10 @@ class ContactEmailController extends Controller
      */
     public function contact(ContactEmailRequest $request)
     {
+        $product = Product::where('name', $request->producto)->first();
+        $primaryColor = $product?->primary_color ?? '#040931';
+        $secondaryColor = $product?->secondary_color ?? '#5EBEB5';
+
         Mail::to(["hvaldiviezos@unprg.edu.pe"])->send(new ContactEmail(
             $request->ruc,
             $request->razon_social,
@@ -49,7 +54,9 @@ class ContactEmailController extends Controller
             $request->telefono,
             $request->correo,
             $request->mensaje,
-            $request->producto
+            $request->producto,
+            $primaryColor,
+            $secondaryColor,
         ));
 
         return response()->json([

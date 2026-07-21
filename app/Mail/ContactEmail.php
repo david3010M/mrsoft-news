@@ -23,10 +23,9 @@ class ContactEmail extends Mailable
     public $correo;
     public $mensaje;
     public $producto;
+    public $primaryColor;
+    public $secondaryColor;
 
-    /**
-     * Create a new message instance.
-     */
     public function __construct(
         string  $ruc,
         string  $razon_social,
@@ -37,6 +36,8 @@ class ContactEmail extends Mailable
         string  $correo,
         string  $mensaje,
         string  $producto,
+        string  $primaryColor = '#040931',
+        string  $secondaryColor = '#5EBEB5',
     )
     {
         $this->ruc = $ruc;
@@ -48,6 +49,8 @@ class ContactEmail extends Mailable
         $this->correo = $correo;
         $this->mensaje = $mensaje;
         $this->producto = $producto;
+        $this->primaryColor = $primaryColor;
+        $this->secondaryColor = $secondaryColor;
     }
 
     /**

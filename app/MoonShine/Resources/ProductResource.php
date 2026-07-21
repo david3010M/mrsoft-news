@@ -12,6 +12,7 @@ use App\MoonShine\Pages\Product\ProductDetailPage;
 
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
+use MoonShine\Fields\Color;
 use MoonShine\Fields\Text;
 use MoonShine\Handlers\ExportHandler;
 use MoonShine\Handlers\ImportHandler;
@@ -62,6 +63,8 @@ class ProductResource extends ModelResource
             Block::make([
                 ID::make(),
                 Text::make('Nombre', 'name')->required(),
+                Color::make('Color primario', 'primary_color')->default('#040931'),
+                Color::make('Color secundario', 'secondary_color')->default('#5EBEB5'),
             ]),
         ];
     }

@@ -145,15 +145,33 @@
         background: transparent !important;
         box-shadow: none !important;
         border-radius: 0 !important;
+        padding: 0.875rem !important;
+    }
+    .report-card-heading {
+        margin-bottom: 0.5rem;
+    }
+    .report-card-heading > svg {
+        width: 1.5rem !important;
+        height: 1.5rem !important;
+        opacity: 0.7;
+    }
+    .report-card-body {
+        margin-top: 0 !important; /* quita el mt-auto que empujaba el número al borde */
     }
     .report-card-value {
-        font-size: 1.75rem !important;
-        margin-top: 0.625rem !important;
+        font-size: 1.5rem !important;
+        margin-top: 0.25rem !important;
         font-weight: 700 !important;
-        color: rgb(14, 116, 144);  /* cyan-700 */
+        color: rgb(14, 116, 144);       /* cyan-700 light */
+        line-height: 1.2 !important;
     }
-    :root.dark .report-card-value { color: rgb(34, 211, 238); } /* cyan-400 dark */
-    .report-card-heading > svg { width: 1.25rem !important; height: 1.25rem !important; }
+    .report-card-title {
+        color: #64748b !important;      /* slate-500 light */
+        font-size: 0.75rem !important;
+        margin-top: 0.2rem !important;
+    }
+    :root.dark .report-card-value { color: rgb(34, 211, 238) !important; }  /* cyan-400 dark */
+    :root.dark .report-card-title { color: #94a3b8 !important; }            /* slate-400 dark — visible en fondo oscuro */
 
     /* ══ CARDS — DARK (sobre slate-900) ══ */
     :root.dark .box,
@@ -179,7 +197,14 @@
     /* ══ BADGE ══ */
     .badge { border-radius: 9999px; font-size: 0.65rem; padding: 0.1rem 0.45rem; font-weight: 600; }
 
+    /* ══ DASHBOARD — el .box que envuelve el Grid es transparente; solo las cards internas son visibles ══ */
+    .box:has(> .grid.grid-cols-12) {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+    }
+
     /* ══ DASHBOARD — gaps entre secciones de métricas ══ */
-    .layout-page .grid.grid-cols-12 { row-gap: 0 !important; }
     .layout-page > .layout-content > * + * { margin-top: 1.25rem; }
 </style>

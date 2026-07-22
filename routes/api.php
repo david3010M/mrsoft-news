@@ -5,6 +5,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactEmailController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReelController;
 use App\Http\Controllers\TypeController;
 use Illuminate\Http\Request;
@@ -42,6 +43,8 @@ Route::resource('comment', CommentController::class)->only(['index', 'show', 'st
 
 Route::resource('type', TypeController::class)->only(['index', 'show', 'store', 'update', 'destroy'])
     ->names(['index' => 'type.index', 'store' => 'type.store', 'show' => 'type.show', 'update' => 'type.update', 'destroy' => 'type.destroy']);
+
+Route::get('products/{product}/pricing', [ProductController::class, 'pricing'])->name('product.pricing');
 
 Route::post('contact', [ContactEmailController::class, 'contact'])->name('contact.send');
 Route::post('contactByValues', [ContactEmailController::class, 'contactByValues'])->name('contactByValues.send');

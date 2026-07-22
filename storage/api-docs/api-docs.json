@@ -921,13 +921,13 @@
                 }
             }
         },
-        "/api/contact": {
+        "/mrsoft-news/public/api/contact": {
             "post": {
                 "tags": [
                     "Contact"
                 ],
                 "summary": "Send a contact form email",
-                "operationId": "bc749962129af50f203b1defb75ada5e",
+                "operationId": "d0cb8d4d5ecf044adeb029d769e65f19",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -1458,6 +1458,89 @@
                                 }
                             }
                         }
+                    }
+                }
+            }
+        },
+        "/api/products/{product}/pricing": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Get pricing modules for a product",
+                "operationId": "f2af3e8a5e99eb50a624d9bc3f883508",
+                "parameters": [
+                    {
+                        "name": "product",
+                        "in": "path",
+                        "description": "Product ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "installation_price": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "example": 500,
+                                            "nullable": true
+                                        },
+                                        "modules": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Módulo Ventas"
+                                                    },
+                                                    "pricing": {
+                                                        "properties": {
+                                                            "monthly": {
+                                                                "type": "number",
+                                                                "format": "float",
+                                                                "example": 99.9
+                                                            },
+                                                            "annual": {
+                                                                "type": "number",
+                                                                "format": "float",
+                                                                "example": 999
+                                                            },
+                                                            "quote": {
+                                                                "type": "boolean",
+                                                                "example": true
+                                                            },
+                                                            "message": {
+                                                                "type": "string",
+                                                                "example": "Contáctenos para cotizar"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Product not found"
                     }
                 }
             }
@@ -2457,6 +2540,10 @@
         {
             "name": "News",
             "description": "News"
+        },
+        {
+            "name": "Product",
+            "description": "Product"
         },
         {
             "name": "Reel",

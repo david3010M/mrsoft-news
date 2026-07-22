@@ -21,6 +21,7 @@ use App\MoonShine\Resources\CommentResource;
 use App\MoonShine\Resources\DepartmentResource;
 use App\MoonShine\Resources\FileResource;
 use App\MoonShine\Resources\NewsResource;
+use App\MoonShine\Resources\ProductPriceResource;
 use App\MoonShine\Resources\ProductResource;
 use App\MoonShine\Resources\ReelResource;
 use App\MoonShine\Resources\TypeResource;
@@ -37,7 +38,9 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
 {
     protected function resources(): array
     {
-        return [];
+        return [
+            new ProductPriceResource(),
+        ];
     }
 
     protected function pages(): array
@@ -101,6 +104,14 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 'primary'   => '8, 145, 178',   // cyan-600
                 'secondary' => '234, 88, 12',   // orange-600
                 'body'      => '2, 6, 23',      // slate-950
+                'dark' => [
+                    50  => '30, 41, 59',         // slate-800
+                    100 => '30, 41, 59',         // slate-800
+                    200 => '51, 65, 85',         // slate-700 – borders visibles pero no blancos
+                    300 => '71, 85, 105',        // slate-600
+                    400 => '100, 116, 139',      // slate-500
+                    500 => '148, 163, 184',      // slate-400
+                ],
             ],
         ];
     }

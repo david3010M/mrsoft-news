@@ -3,63 +3,70 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 
 class ProductController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @OA\Get(
+     *     path="/api/products/{product}/pricing",
+     *     summary="Get pricing modules for a product",
+     *     tags={"Product"},
+     *     @OA\Parameter(name="product", in="path", required=true, description="Product ID", @OA\Schema(type="integer", example=1)),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Success",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="installation_price", type="number", format="float", nullable=true, example=500.00),
+     *             @OA\Property(
+     *                 property="modules",
+     *                 type="array",
+     *                 @OA\Items(
+     *                     @OA\Property(property="id", type="integer", example=1),
+     *                     @OA\Property(property="name", type="string", example="Módulo Ventas"),
+     *                     @OA\Property(
+     *                         property="pricing",
+     *                         type="object",
+     *                         @OA\Property(property="monthly", type="number", format="float", example=99.90),
+     *                         @OA\Property(property="annual", type="number", format="float", example=999.00),
+     *                         @OA\Property(property="quote", type="boolean", example=true),
+     *                         @OA\Property(property="message", type="string", example="Contáctenos para cotizar")
+     *                     )
+     *                 )
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(response="404", description="Product not found")
+     * )
      */
-    public function index()
+    public function pricing(Product $product): JsonResponse
     {
-        //
-    }
+        $modules = $product->prices->groupBy('name')->map(function ($rows, $name) {
+            $pricing = [];
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+            foreach ($rows as $row) {
+                if ($row->is_quote) {
+                    $pricing['quote'] = true;
+                    if ($row->quote_message) {
+                        $pricing['message'] = $row->quote_message;
+                    }
+                } else {
+                    $pricing[$row->period] = (float)$row->price;
+                }
+            }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+            return [
+                'id'      => $rows->first()->id,
+                'name'    => $name,
+                'pricing' => $pricing,
+            ];
+        })->values();
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Product $product)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Product $product)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Product $product)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Product $product)
-    {
-        //
+        return response()->json([
+            'installation_price' => $product->installation_price !== null
+                ? (float)$product->installation_price
+                : null,
+            'modules'            => $modules,
+        ]);
     }
 }

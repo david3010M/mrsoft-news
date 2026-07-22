@@ -11,6 +11,7 @@ use MoonShine\Decorations\Heading;
 use MoonShine\Fields\Number;
 use MoonShine\Fields\Select;
 use MoonShine\Fields\Text;
+use MoonShine\Fields\Textarea;
 use MoonShine\Pages\Crud\DetailPage;
 
 class ProductDetailPage extends DetailPage
@@ -38,6 +39,8 @@ class ProductDetailPage extends DetailPage
         $table = TableBuilder::make(
             fields: [
                 Text::make('Módulo', 'name'),
+                Text::make('Desc. corta', 'short_description'),
+                Select::make('Destacado', 'is_featured')->options(['1' => 'Sí', '0' => 'No']),
                 Number::make('Mensual', 'monthly'),
                 Number::make('Anual', 'annual'),
                 Select::make('A cotizar', 'is_quote')->options(['1' => 'Sí', '0' => 'No']),
@@ -47,7 +50,7 @@ class ProductDetailPage extends DetailPage
         )->simple()->preview();
 
         $components[] = Divider::make();
-        $components[] = Heading::make('Módulos / Precios');
+        $components[] = Heading::make('Módulos');
         $components[] = Block::make([$table]);
 
         return $components;

@@ -110,13 +110,17 @@
         padding: 0.35rem 0.875rem !important;
     }
 
-    /* ══ TABLAS — filas ultra compactas ══ */
+    /* ══ TABLAS — filas compactas ══ */
     .table tbody td,
-    .table tbody th               { padding: 0.2rem 0.5rem !important; }
+    .table tbody th               { padding: 0.4rem 0.75rem !important; }
     .table-list tbody td,
-    .table-list tbody th          { padding: 0.2rem 1rem !important; }
+    .table-list tbody th          { padding: 0.4rem 1rem !important; }
     .table-list thead td,
-    .table-list thead th          { padding: 0.25rem 1rem !important; }
+    .table-list thead th          { padding: 0.4rem 1rem !important; }
+
+    /* ══ TABLAS — bordes en dark más apagados (dark-600 en vez de dark-400) ══ */
+    :root.dark .table tbody td,
+    :root.dark .table tbody th    { border-color: #334155 !important; } /* slate-700 */
 
     /* ══ FORMS — compactos ══ */
     .form-group,
@@ -131,6 +135,55 @@
         min-height:     2rem    !important;
     }
     .form-textarea            { min-height: 4.5rem !important; }
+    /* ══ CHOICES.JS — select compacto (sobrescribe estilos inline de Alpine/Choices) ══ */
+    .choices__inner {
+        min-height: 0 !important;
+        height: 2rem !important;
+        max-height: 2rem !important;
+        padding: 0 2rem 0 0.5rem !important;
+        font-size: 0.8125rem !important;
+        border-radius: 0.375rem !important;
+        display: flex !important;
+        align-items: center !important;
+        overflow: hidden !important;
+    }
+    .choices__list--single {
+        padding: 0 !important;
+        line-height: 1 !important;
+    }
+    .choices__list--single .choices__item {
+        padding: 0 !important;
+        font-size: 0.8125rem !important;
+        line-height: 1 !important;
+        white-space: nowrap !important;
+    }
+    /* Flecha — centrada verticalmente */
+    .choices[data-type*="select-one"]::after {
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        margin-top: 0 !important;
+        right: 0.6rem !important;
+    }
+    /* Dropdown abierto — ancho mínimo para que las opciones no se corten */
+    .choices__list--dropdown,
+    .choices__list[aria-expanded] {
+        min-width: 5rem !important;
+        width: auto !important;
+        z-index: 9999 !important;
+    }
+    .choices__list--dropdown .choices__item {
+        font-size: 0.8125rem !important;
+        padding: 0.3rem 0.6rem !important;
+        white-space: nowrap !important;
+        min-width: max-content !important;
+    }
+    /* Ocultar el hint "Press to select" */
+    .choices__list--dropdown .choices__notice,
+    .choices__item--choice .choices__button,
+    [data-select-text]::after {
+        display: none !important;
+        content: none !important;
+    }
     /* Reduce gap between form sections */
     .box .form-group + .form-group { margin-top: 0 !important; }
 

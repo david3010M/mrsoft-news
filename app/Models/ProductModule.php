@@ -23,8 +23,6 @@ class ProductModule extends Model
     ];
 
     protected $casts = [
-        'is_featured' => 'boolean',
-        'is_quote'    => 'boolean',
         'monthly'     => 'decimal:2',
         'annual'      => 'decimal:2',
         'features'    => 'array',

@@ -24,6 +24,17 @@ class ProductController extends Controller
      *                 @OA\Items(
      *                     @OA\Property(property="id", type="integer", example=1),
      *                     @OA\Property(property="name", type="string", example="Módulo Ventas"),
+     *                     @OA\Property(property="short_description", type="string", nullable=true, example="Gestión de ventas y facturación"),
+     *                     @OA\Property(property="description", type="string", nullable=true, example="Descripción completa del módulo de ventas"),
+     *                     @OA\Property(property="is_featured", type="boolean", example=true),
+     *                     @OA\Property(
+     *                         property="features",
+     *                         type="array",
+     *                         @OA\Items(
+     *                             @OA\Property(property="name", type="string", example="Reportes en tiempo real"),
+     *                             @OA\Property(property="description", type="string", nullable=true, example="Visualiza tus ventas al instante")
+     *                         )
+     *                     ),
      *                     @OA\Property(
      *                         property="pricing",
      *                         type="object",
@@ -41,24 +52,32 @@ class ProductController extends Controller
      */
     public function pricing(Product $product): JsonResponse
     {
-        $modules = $product->prices->groupBy('name')->map(function ($rows, $name) {
+        $modules = $product->modules->map(function ($module) {
             $pricing = [];
 
-            foreach ($rows as $row) {
-                if ($row->is_quote) {
-                    $pricing['quote'] = true;
-                    if ($row->quote_message) {
-                        $pricing['message'] = $row->quote_message;
-                    }
-                } else {
-                    $pricing[$row->period] = (float)$row->price;
+            if ($module->monthly !== null) {
+                $pricing['monthly'] = (float) $module->monthly;
+            }
+
+            if ($module->annual !== null) {
+                $pricing['annual'] = (float) $module->annual;
+            }
+
+            if ($module->is_quote) {
+                $pricing['quote'] = true;
+                if ($module->quote_message) {
+                    $pricing['message'] = $module->quote_message;
                 }
             }
 
             return [
-                'id'      => $rows->first()->id,
-                'name'    => $name,
-                'pricing' => $pricing,
+                'id'                => $module->id,
+                'name'              => $module->name,
+                'short_description' => $module->short_description,
+                'description'       => $module->description,
+                'is_featured'       => (bool) $module->is_featured,
+                'features'          => $module->features ?? [],
+                'pricing'           => $pricing,
             ];
         })->values();
 

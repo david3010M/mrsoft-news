@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProductPrice extends Model
+class ProductModule extends Model
 {
     use HasFactory;
 
@@ -14,18 +14,19 @@ class ProductPrice extends Model
         'name',
         'short_description',
         'description',
-        'period',
-        'price',
+        'is_featured',
+        'monthly',
+        'annual',
         'is_quote',
         'quote_message',
-        'is_featured',
         'features',
     ];
 
     protected $casts = [
-        'price'       => 'decimal:2',
-        'is_quote'    => 'boolean',
         'is_featured' => 'boolean',
+        'is_quote'    => 'boolean',
+        'monthly'     => 'decimal:2',
+        'annual'      => 'decimal:2',
         'features'    => 'array',
     ];
 

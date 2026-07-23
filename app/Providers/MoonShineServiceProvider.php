@@ -21,7 +21,7 @@ use App\MoonShine\Resources\CommentResource;
 use App\MoonShine\Resources\DepartmentResource;
 use App\MoonShine\Resources\FileResource;
 use App\MoonShine\Resources\NewsResource;
-use App\MoonShine\Resources\ProductPriceResource;
+use App\MoonShine\Resources\ProductModuleResource;
 use App\MoonShine\Resources\ProductResource;
 use App\MoonShine\Resources\ReelResource;
 use App\MoonShine\Resources\TypeResource;
@@ -39,7 +39,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
     protected function resources(): array
     {
         return [
-            new ProductPriceResource(),
+            new ProductModuleResource(),
         ];
     }
 

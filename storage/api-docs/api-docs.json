@@ -1506,6 +1506,37 @@
                                                         "type": "string",
                                                         "example": "Módulo Ventas"
                                                     },
+                                                    "short_description": {
+                                                        "type": "string",
+                                                        "example": "Gestión de ventas y facturación",
+                                                        "nullable": true
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "example": "Descripción completa del módulo de ventas",
+                                                        "nullable": true
+                                                    },
+                                                    "is_featured": {
+                                                        "type": "boolean",
+                                                        "example": true
+                                                    },
+                                                    "features": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "properties": {
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "example": "Reportes en tiempo real"
+                                                                },
+                                                                "description": {
+                                                                    "type": "string",
+                                                                    "example": "Visualiza tus ventas al instante",
+                                                                    "nullable": true
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    },
                                                     "pricing": {
                                                         "properties": {
                                                             "monthly": {

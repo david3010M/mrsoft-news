@@ -12,10 +12,10 @@ use App\Models\News;
 use App\Models\Product;
 use App\Models\Reel;
 use App\Models\Type;
+use App\MoonShine\Metrics\LineChartMetric;
 use MoonShine\Decorations\Column;
 use MoonShine\Decorations\Grid;
 use MoonShine\Metrics\DonutChartMetric;
-use MoonShine\Metrics\LineChartMetric;
 use MoonShine\Metrics\ValueMetric;
 use MoonShine\Pages\Page;
 

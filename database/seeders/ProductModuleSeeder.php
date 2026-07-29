@@ -1,0 +1,152 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Product;
+use App\Models\ProductModule;
+use Illuminate\Database\Seeder;
+
+class ProductModuleSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        $modules = [
+            'Gesrest' => [
+                [
+                    'name' => 'Restaurante Inteligente',
+                    'short_description' => 'Transforma los datos de tu restaurante en gráficos',
+                    'description' => 'Tomar buenas decisiones requiere información clara. Este módulo transforma los datos de tu restaurante en gráficos visuales e indicadores clave que te permiten entender qué está funcionando, qué puedes mejorar y hacia dónde dirigir tu negocio. Deja de operar a ciegas y empieza a crecer con estrategia.',
+                    'is_featured' => true,
+                    'monthly' => 60.00,
+                    'annual' => 600.00,
+                    'is_quote' => false,
+                    'quote_message' => null,
+                    'features' => [
+                        ['name' => 'Estadísticas y Análisis de Ventas', 'description' => 'Conoce a fondo el comportamiento de tus ventas: ingreso promedio por persona y por transacción, tiempo promedio en mesa, productos y categorías más vendidos, comparativa entre el mes anterior y el actual, ventas por horario y por tipo de comprobante. Información que te dice cuándo vendes más, qué venden mejor y cómo mejorar tu operación día a día.'],
+                        ['name' => 'Estadísticas y Análisis de Inventario', 'description' => 'Evita quiebres de stock y excesos innecesarios. Este apartado te indica cuál es el nivel óptimo para cada producto y qué necesitas reponer antes de que sea tarde. Gestión de inventario basada en datos, no en suposiciones.'],
+                        ['name' => 'Estadísticas y Análisis de Rentabilidad', 'description' => 'Descubre cuánto ganas realmente. Analiza la rentabilidad bruta de tu negocio, identifica qué tipo de egreso impacta más tus márgenes y compara la rentabilidad por categoría y por producto. Así sabes qué conservar en tu carta, qué ajustar y qué retirar.'],
+                        ['name' => 'Estadísticas y Análisis de Ingresos y Gastos de Caja', 'description' => 'Visualiza el flujo de dinero de tu negocio con un análisis diario, el comportamiento a lo largo de las semanas, los promedios diarios y mensuales, los egresos por concepto de pago y la participación de cada rubro en el mes. Transparencia financiera al alcance de un vistazo.'],
+                        ['name' => 'Estadísticas y Análisis de Tiempos de Cocina', 'description' => 'Mide la eficiencia de tu cocina con datos concretos. Evalúa la calidad de los platos, revisa los pedidos aceptados y rechazados, y conoce el tiempo promedio de preparación por producto. Una herramienta poderosa para mejorar la velocidad del servicio y la satisfacción del cliente.'],
+                    ],
+                ],
+                [
+                    'name' => 'Carta Digital',
+                    'short_description' => 'Ofrece una carta digital atractiva, actualizada y accesible desde cualquier celular.',
+                    'description' => 'Moderniza la experiencia de tus clientes desde el primer contacto. Olvídate de los menús impresos desgastados o los PDFs difíciles de navegar, y ofrece una carta digital atractiva, actualizada y accesible desde cualquier celular. Una experiencia que sorprende antes de que llegue el primer plato.',
+                    'is_featured' => false,
+                    'monthly' => 20.00,
+                    'annual' => 200.00,
+                    'is_quote' => false,
+                    'quote_message' => null,
+                    'features' => [
+                        ['name' => 'Código QR', 'description' => 'Tus clientes solo tienen que escanear el código QR de su mesa o ingresar al enlace compartido para explorar tu carta completa al instante. Sin descargas, sin complicaciones.'],
+                        ['name' => 'Personalización', 'description' => 'Tu carta digital se construye directamente desde el listado de productos que ya usas en el sistema para comandar. No necesitas cargar nada dos veces: lo que está en tu sistema, aparece en tu carta, organizado por categorías y listo para mostrarse al mundo.'],
+                        ['name' => 'Interactividad', 'description' => 'Los clientes pueden armar su propio carrito de compra seleccionando productos, eligiendo opciones adicionales, complementos, y añadiendo notas personalizadas. Una experiencia de pedido intuitiva que reduce malentendidos y agiliza la atención.'],
+                        ['name' => 'Comunicación con el Cliente', 'description' => 'Una vez armado el pedido, el sistema genera automáticamente un mensaje de WhatsApp para coordinar el pago con el cliente de forma rápida y directa. Tecnología que acerca a las personas.'],
+                    ],
+                ],
+                [
+                    'name' => 'Encuesta de Opinión',
+                    'short_description' => 'Mide la calidad de tu servicio y recibe avisos automáticos de malas experiencias.',
+                    'description' => 'La opinión de tus clientes es tu mejor brújula. Este módulo te permite crear encuestas personalizadas para medir la calidad de tu servicio, identificar oportunidades de mejora y entender qué es lo que más valoran quienes visitan tu restaurante. Escucha activa que se traduce en decisiones concretas.',
+                    'is_featured' => false,
+                    'monthly' => 40.00,
+                    'annual' => 400.00,
+                    'is_quote' => false,
+                    'quote_message' => null,
+                    'features' => [
+                        ['name' => 'Personalización', 'description' => 'Diseña encuestas a tu medida con distintos tipos de preguntas: selección de opción única, opción múltiple, confirmación de sí o no, escala de valoración (malo, bueno o excelente), calificación por estrellas o una escala numérica personalizada. Flexibilidad total para capturar exactamente lo que quieres saber.'],
+                        ['name' => 'Avisos Automáticos de Malas Experiencias', 'description' => 'Cuando un cliente tiene una mala experiencia, cada segundo cuenta. El sistema te notifica de inmediato por WhatsApp cada vez que una encuesta refleja insatisfacción, indicándote el pedido involucrado y el responsable a cargo de esa mesa. Reacciona a tiempo, recupera la confianza y convierte una mala experiencia en una oportunidad de fidelización.'],
+                        ['name' => 'Reportes y Estadísticas', 'description' => 'Accede a un resumen claro y visual de lo que opinan tus clientes sobre la comida, el ambiente, la atención y más. Tendencias, puntos fuertes y áreas de mejora en un solo lugar para que tomes acción con información sólida.'],
+                    ],
+                ],
+                [
+                    'name' => 'Reservas',
+                    'short_description' => 'Control total de tus mesas y salones en tiempo real.',
+                    'description' => 'Gestiona tus reservas con la misma precisión con la que preparas tus platos. Este módulo te da el control total de tus mesas y salones en tiempo real, permitiéndote organizar cada reserva, anticipar la demanda y garantizar que cada cliente sea recibido con todo listo para él.',
+                    'is_featured' => false,
+                    'monthly' => 30.00,
+                    'annual' => 300.00,
+                    'is_quote' => false,
+                    'quote_message' => null,
+                    'features' => [
+                        ['name' => 'Agenda Diaria y Calendario Semanal / Mensual', 'description' => 'Visualiza todas tus reservas en una agenda clara y ordenada, tanto a nivel diario como en vista semanal o mensual. Las reservas con pagos anticipados se destacan visualmente para que sepas, de un vistazo, qué está confirmado y qué aún está pendiente.'],
+                        ['name' => 'Pagos Anticipados', 'description' => 'Registra los pagos anticipados de tus reservas, genera el comprobante correspondiente si es necesario y refleja ese ingreso directamente en tu caja chica. Sin vacíos en tu cuadre de dinero y con total trazabilidad de cada operación.'],
+                        ['name' => 'Recordatorios de Asistencia', 'description' => 'Reduce las ausencias de forma simple y efectiva. Envía recordatorios automáticos a tus clientes por WhatsApp o correo electrónico para asegurarte de que no olviden su reserva. Menos mesas vacías, mejor planificación y una relación más cercana con quien te elige.'],
+                    ],
+                ],
+                [
+                    'name' => 'Eventos y Entradas',
+                    'short_description' => 'Organiza, promueve y controla cada evento con generación de entradas y código QR.',
+                    'description' => 'Lleva tus eventos al siguiente nivel. Este módulo te da las herramientas para organizar, promover y controlar cada evento con profesionalismo: desde la generación de entradas hasta el control de asistencia en puerta, todo en un solo sistema.',
+                    'is_featured' => false,
+                    'monthly' => 50.00,
+                    'annual' => 500.00,
+                    'is_quote' => false,
+                    'quote_message' => null,
+                    'features' => [
+                        ['name' => 'Eventos Personalizados', 'description' => 'Crea eventos con todos sus detalles: nombre, dirección, ubicación en Google Maps, fecha y hora de vencimiento. Cada evento tiene su propia identidad dentro del sistema para que puedas gestionarlos de forma independiente y ordenada.'],
+                        ['name' => 'Control de Promotores', 'description' => 'Asigna a cada promotor un enlace único a través del cual los asistentes podrán generar sus entradas, y define cuántas puede distribuir cada uno. De esta manera tienes visibilidad total sobre el alcance de cada promotor, mantienes el control de la capacidad del evento y garantizas una distribución organizada desde el inicio.'],
+                        ['name' => 'Código QR y Recopilación de Datos', 'description' => 'Cada asistente genera su propia entrada a través del enlace de su promotor y completa un breve registro con datos como número de celular, correo electrónico y fecha de nacimiento, información que puedes aprovechar para futuras campañas y promociones. Al finalizar, el asistente recibe su código QR automáticamente en su correo.'],
+                        ['name' => 'Control de Asistencia', 'description' => 'En la puerta, el control es total. Valida el ingreso de cada asistente mediante la lectura de su código QR, evita accesos con entradas duplicadas o no autorizadas y eleva la seguridad de tu evento. Una experiencia más fluida para los asistentes y más tranquilidad para ti.'],
+                        ['name' => 'Reportes y Estadísticas', 'description' => 'Al finalizar el evento, accede a un informe completo: cuántas entradas generó cada promotor, cuántas personas asistieron efectivamente, qué porcentaje no se presentó y el perfil demográfico de tus asistentes según sus fechas de nacimiento. Datos que te ayudan a planificar mejor el próximo evento.'],
+                    ],
+                ],
+                [
+                    'name' => 'Autoservicio',
+                    'short_description' => 'Elimina las colas: tus clientes piden y pagan de forma autónoma.',
+                    'description' => 'Transforma la experiencia de compra de tus clientes y elimina las largas colas en tu negocio. Este módulo permite que cada cliente realice su pedido y pago de forma completamente autónoma, ya sea desde terminales de autoservicio instaladas en tu local o desde su propio celular mediante un enlace web. Menos tiempo de espera, mayor capacidad de atención y una operación mucho más eficiente durante las horas de mayor demanda.',
+                    'is_featured' => false,
+                    'monthly' => 50.00,
+                    'annual' => 500.00,
+                    'is_quote' => false,
+                    'quote_message' => null,
+                    'features' => [
+                        ['name' => 'Canales autónomos', 'description' => 'Ofrece a tus clientes dos formas de comprar sin necesidad de pasar por caja. Instala terminales de autoservicio en tu establecimiento para que los clientes realicen sus pedidos de manera independiente o comparte un enlace web para que puedan ordenar directamente desde su celular. Una sola plataforma para atender tanto dentro como fuera del local.'],
+                        ['name' => 'Fácil gestión', 'description' => 'Decide qué productos y categorías estarán disponibles independientemente a tu operación habitual. Tu autoservicio se alimenta directamente de la carta de platos que ya usas en tu Atención en Local, por lo que cualquier actualización de stock o descripción se reflejará de forma automática. Sin embargo, puedes configurar precios diferenciados entre tu atención presencial y tu canal de autoservicio.'],
+                        ['name' => 'Interactividad', 'description' => 'El cliente recorre un proceso de compra intuitivo y moderno. Desde el inicio puede visualizar banners promocionales, navegar por la carta, agregar productos a su carrito según el stock en tiempo real, seleccionar complementos, incluir notas personalizadas y solicitar comprobante electrónico antes de finalizar su pedido. Todo diseñado para reducir errores y agilizar la atención.'],
+                        ['name' => 'Pasarela de pago', 'description' => 'El proceso de pago se realiza de forma rápida y segura mediante una pasarela de pagos integrada. Los clientes pueden pagar con tarjeta, Yape o Plin. Una experiencia completamente digital que acelera tu atención.'],
+                        ['name' => 'Validación y despacho de pedidos', 'description' => 'El cliente recibe su código de pedido en formato QR a través de su correo electrónico y WhatsApp. Además, los pedidos desde terminal física se imprimen automáticamente en la impresora térmica conectada al equipo. Evita confusiones y reduce errores de entrega mediante la validación de código de pedido en la zona de entrega.'],
+                    ],
+                ],
+                [
+                    'name' => 'Tienda virtual',
+                    'short_description' => 'Tu negocio disponible 24/7 en el mundo digital.',
+                    'description' => 'Tu negocio merece estar disponible para cualquier cliente en cualquier lugar. Con nuestra tienda virtual desarrollada a medida, llevas tu marca al mundo digital con una experiencia de compra moderna, atractiva y completamente integrada con tu operación diaria. Sin complicaciones técnicas, sin doble gestión: todo conectado desde un solo sistema.',
+                    'is_featured' => false,
+                    'monthly' => 0.00,
+                    'annual' => 0.00,
+                    'is_quote' => true,
+                    'quote_message' => 'Contactar ventas',
+                    'features' => [
+                        ['name' => 'Personalización', 'description' => 'Tu tienda, tu identidad. Diseñamos y desarrollamos una tienda virtual única, adaptada al estilo y las necesidades específicas de tu negocio, con dominio propio y una propuesta visual que refleja lo que tu marca representa.'],
+                        ['name' => 'Fácil gestión', 'description' => 'Olvídate de mantener dos cartas de platos distintas. Tu tienda virtual se alimenta directamente del catálogo de productos que ya usas en tu Atención en local, por lo que cualquier actualización de stock o descripción se refleja de forma automática en tu tienda en línea. Sin embargo, puedes configurar precios diferenciados entre tu atención presencial y tu canal virtual.'],
+                        ['name' => 'Interactividad', 'description' => 'Ofrece a tus clientes una experiencia de compra completa y sin fricciones. Podrán navegar por tu catálogo con toda la información que necesitan para decidir con confianza, y armar su carrito al elegir productos según el stock en tiempo real.'],
+                        ['name' => 'Pasarela de pago', 'description' => 'Tus clientes pagan de forma segura y autónoma directamente desde la tienda. Una vez confirmado el pago, el pedido llega automáticamente a tu zona de Delivery/Mostrador, así como a tu cocina, para que puedas prepararlo de inmediato. Menos pasos, menos errores, más ventas.'],
+                    ],
+                ],
+            ],
+        ];
+
+        foreach ($modules as $productName => $plans) {
+            $product = Product::where('name', $productName)->first();
+
+            if (!$product) {
+                continue;
+            }
+
+            foreach ($plans as $plan) {
+                ProductModule::updateOrCreate(
+                    [
+                        'product_id' => $product->id,
+                        'name' => $plan['name'],
+                    ],
+                    $plan
+                );
+            }
+        }
+    }
+}

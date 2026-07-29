@@ -15,6 +15,7 @@ class ProductModule extends Model
         'short_description',
         'description',
         'is_featured',
+        'is_required',
         'monthly',
         'annual',
         'is_quote',

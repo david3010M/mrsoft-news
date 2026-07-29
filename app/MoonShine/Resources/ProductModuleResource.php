@@ -45,7 +45,7 @@ class ProductModuleResource extends ModelResource
                 Grid::make([
                     Column::make([
                         Text::make('Nombre', 'name')->required(),
-                    ])->columnSpan(3),
+                    ])->columnSpan(2),
                     Column::make([
                         Select::make('Destacado', 'is_featured')
                             ->options(['1' => 'Sí', '0' => 'No'])
@@ -57,11 +57,16 @@ class ProductModuleResource extends ModelResource
                             ->default('0')->hideOnIndex(),
                     ])->columnSpan(2),
                     Column::make([
+                        Select::make('Obligatorio', 'is_required')
+                            ->options(['1' => 'Sí', '0' => 'No'])
+                            ->default('0')->hideOnIndex(),
+                    ])->columnSpan(2),
+                    Column::make([
                         Number::make('Precio mensual', 'monthly')->min(0)->step(0.01)->nullable(),
                     ])->columnSpan(2),
                     Column::make([
                         Number::make('Precio anual', 'annual')->min(0)->step(0.01)->nullable(),
-                    ])->columnSpan(3),
+                    ])->columnSpan(2),
                 ]),
 
                 Grid::make([
@@ -116,6 +121,7 @@ class ProductModuleResource extends ModelResource
             'short_description' => 'nullable|string|max:255',
             'description' => 'nullable|string',
             'is_featured' => 'nullable|in:0,1',
+            'is_required' => 'nullable|in:0,1',
             'monthly' => 'nullable|numeric|min:0',
             'annual' => 'nullable|numeric|min:0',
             'is_quote' => 'nullable|in:0,1',

@@ -27,6 +27,7 @@ class ProductController extends Controller
      *                     @OA\Property(property="short_description", type="string", nullable=true, example="Gestión de ventas y facturación"),
      *                     @OA\Property(property="description", type="string", nullable=true, example="Descripción completa del módulo de ventas"),
      *                     @OA\Property(property="is_featured", type="boolean", example=true),
+     *                     @OA\Property(property="is_required", type="boolean", example=false),
      *                     @OA\Property(
      *                         property="features",
      *                         type="array",
@@ -76,6 +77,7 @@ class ProductController extends Controller
                 'short_description' => $module->short_description,
                 'description'       => $module->description,
                 'is_featured'       => (bool) $module->is_featured,
+                'is_required'       => (bool) $module->is_required,
                 'features'          => $module->features ?? [],
                 'pricing'           => $pricing,
             ];

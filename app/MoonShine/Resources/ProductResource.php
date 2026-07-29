@@ -62,13 +62,12 @@ class ProductResource extends ModelResource
             Block::make([
                 ID::make(),
                 Text::make('Nombre', 'name')->required(),
-                Color::make('Color primario', 'primary_color')->default('#040931')->hideOnIndex(),
-                Color::make('Color secundario', 'secondary_color')->default('#5EBEB5')->hideOnIndex(),
+                Color::make('Color primario', 'primary_color')->default('#040931'),
+                Color::make('Color secundario', 'secondary_color')->default('#5EBEB5'),
                 Number::make('Precio de instalación', 'installation_price')
                     ->min(0)
                     ->step(0.01)
-                    ->nullable()
-                    ->hideOnIndex(),
+                    ->nullable(),
             ]),
             Block::make([
                 HasMany::make('Módulos', 'modules', resource: new ProductModuleResource())

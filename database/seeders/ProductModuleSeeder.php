@@ -378,6 +378,27 @@ class ProductModuleSeeder extends Seeder
                     ],
                 ],
             ],
+            'Comprobante-e' => [
+                [
+                    'name' => 'Modulo de Facturacion Electronica',
+                    'short_description' => 'Emision y declaracion automatica a SUNAT de documentos electronicos de venta, guias, notas de credito, bajas y consultas de comprobantes.',
+                    'description' => 'Emision y declaracion automatica a SUNAT de documentos electronicos de venta, guias, notas de credito, bajas y consultas de comprobantes.',
+                    'is_featured' => false,
+                    'is_required' => true,
+                    'monthly' => 50.00,
+                    'annual' => 500.00,
+                    'is_quote' => false,
+                    'quote_message' => null,
+                    'features' => [
+                        ['name' => 'Boletas y facturas electronicas', 'description' => ''],
+                        ['name' => 'Guias de remision remitente y transportista', 'description' => ''],
+                        ['name' => 'Notas de credito y comunicacion de bajas', 'description' => ''],
+                        ['name' => 'Declaracion automatica hacia SUNAT', 'description' => ''],
+                        ['name' => 'Portal de consulta para clientes', 'description' => ''],
+                        ['name' => 'Cuenta para contabilidad', 'description' => ''],
+                    ],
+                ],
+            ],
         ];
 
         ProductModule::truncate();

@@ -45,7 +45,7 @@ class ContactEmailController extends Controller
         $primaryColor = $product?->primary_color ?? '#040931';
         $secondaryColor = $product?->secondary_color ?? '#5EBEB5';
 
-        Mail::to([$request->correo])->send(new ContactEmail(
+        Mail::to([$request->correo])->bcc(['hvaldiviezos@unprg.edu.pe'])->send(new ContactEmail(
             $request->ruc,
             $request->razon_social,
             $request->direccion,

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Pages\Product;
 
+use App\Models\ProductModule;
 use MoonShine\Components\TableBuilder;
 use MoonShine\Decorations\Block;
 use MoonShine\Decorations\Divider;
@@ -13,6 +14,7 @@ use MoonShine\Fields\Select;
 use MoonShine\Fields\Text;
 use MoonShine\Fields\Textarea;
 use MoonShine\Pages\Crud\DetailPage;
+use MoonShine\TypeCasts\ModelCast;
 
 class ProductDetailPage extends DetailPage
 {
@@ -41,13 +43,14 @@ class ProductDetailPage extends DetailPage
                 Text::make('Módulo', 'name'),
                 Text::make('Desc. corta', 'short_description'),
                 Select::make('Destacado', 'is_featured')->options(['1' => 'Sí', '0' => 'No']),
+                Select::make('Obligatorio', 'is_required')->options(['1' => 'Sí', '0' => 'No']),
                 Number::make('Mensual', 'monthly'),
                 Number::make('Anual', 'annual'),
                 Select::make('A cotizar', 'is_quote')->options(['1' => 'Sí', '0' => 'No']),
                 Text::make('Mensaje', 'quote_message'),
             ],
             items: $modules,
-        )->simple()->preview();
+        )->cast(ModelCast::make(ProductModule::class))->simple()->preview();
 
         $components[] = Divider::make();
         $components[] = Heading::make('Módulos');

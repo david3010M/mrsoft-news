@@ -1520,6 +1520,10 @@
                                                         "type": "boolean",
                                                         "example": true
                                                     },
+                                                    "is_required": {
+                                                        "type": "boolean",
+                                                        "example": false
+                                                    },
                                                     "features": {
                                                         "type": "array",
                                                         "items": {

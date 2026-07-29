@@ -117,15 +117,15 @@ class ProductModuleResource extends ModelResource
     public function rules(Model $item): array
     {
         return [
-            'name' => 'required|string|max:255',
-            'short_description' => 'nullable|string|max:255',
+            'name' => 'required|string',
+            'short_description' => 'nullable|string',
             'description' => 'nullable|string',
             'is_featured' => 'nullable|in:0,1',
             'is_required' => 'nullable|in:0,1',
             'monthly' => 'nullable|numeric|min:0',
             'annual' => 'nullable|numeric|min:0',
             'is_quote' => 'nullable|in:0,1',
-            'quote_message' => 'nullable|string|max:255',
+            'quote_message' => 'nullable|string',
         ];
     }
 }

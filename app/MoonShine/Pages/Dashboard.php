@@ -101,6 +101,22 @@ class Dashboard extends Page
                             'Clientes'   => Client::count(),
                         ]),
                 ])->columnSpan(4),
+            ])->customAttributes(['class' => 'gap-4 mb-4']),
+
+            Grid::make([
+                Column::make([
+                    LineChartMetric::make('Nuevos clientes por mes')
+                        ->line(
+                            fn() => Client::selectRaw("DATE_FORMAT(created_at, '%Y-%m') as period, count(*) as total")
+                                ->where('created_at', '>=', now()->subMonths(11)->startOfMonth())
+                                ->groupBy('period')
+                                ->orderBy('period')
+                                ->pluck('total', 'period')
+                                ->toArray(),
+                            '#d97706'
+                        )
+                        ->withoutSortKeys(),
+                ])->columnSpan(12),
             ])->customAttributes(['class' => 'gap-4']),
         ];
     }

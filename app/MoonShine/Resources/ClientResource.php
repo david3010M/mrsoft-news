@@ -4,12 +4,16 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Resources;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Client;
+use App\Models\Department;
+use App\Models\Product;
 use MoonShine\Enums\PageType;
 use MoonShine\Fields\Image;
 use MoonShine\Fields\Relationships\BelongsTo;
 use MoonShine\Fields\Relationships\HasMany;
+use MoonShine\Fields\Select;
 use MoonShine\Fields\Switcher;
 use MoonShine\Fields\Text;
 use MoonShine\Handlers\ExportHandler;
@@ -40,9 +44,57 @@ class ClientResource extends ModelResource
     public function filters(): array
     {
         return [
-            BelongsTo::make('Tipos', 'type', fn($item) => "$item->name - {$item->product['name']}")->required()->searchable(),
+            // Filtro principal: producto (Gesrest, 360sys, HotelHUB, Comprobante-e...).
+            // Client no tiene product_id directo (llega vía type->product), por lo
+            // que se filtra con whereHas en vez del apply por defecto de MoonShine.
+            Select::make('Producto', 'product_id')
+                ->options(Product::pluck('name', 'id')->toArray())
+                ->nullable()
+                ->onApply(
+                    fn(Builder $query, $value) => $this->filterValueOrNull($value) !== null
+                        ? $query->whereHas('type.product', fn(Builder $q) => $q->where('products.id', $this->filterValueOrNull($value)))
+                        : $query
+                ),
+            // Nota: BelongsTo::column() devuelve el nombre de la relación ('type'),
+            // no la FK real ('type_id'), y MoonShine no registra un apply por
+            // defecto para BelongsTo en filtros -> sin onApply() esto rompía con
+            // "Unknown column 'type'" apenas se seleccionaba un tipo.
+            BelongsTo::make('Tipos', 'type', fn($item) => "$item->name - {$item->product['name']}")
+                ->nullable()
+                ->searchable()
+                ->onApply(
+                    fn(Builder $query, $value) => $this->filterValueOrNull($value) !== null
+                        ? $query->where('type_id', $this->filterValueOrNull($value))
+                        : $query
+                ),
+            Select::make('Departamento', 'department_id')
+                ->options(Department::pluck('name', 'id')->toArray())
+                ->nullable()
+                ->onApply(
+                    fn(Builder $query, $value) => $this->filterValueOrNull($value) !== null
+                        ? $query->whereHas('departments', fn(Builder $q) => $q->where('departments.id', $this->filterValueOrNull($value)))
+                        : $query
+                ),
             $this->perPageSelect(),
         ];
+    }
+
+    /**
+     * Normaliza el valor crudo de un filtro Select: null/false/'' (nada
+     * seleccionado) y también el string literal "null" (que algunos
+     * selects sin valor mandan tal cual) se tratan como "sin filtro".
+     */
+    private function filterValueOrNull(mixed $value): int|string|null
+    {
+        if ($value === null || $value === false || $value === '') {
+            return null;
+        }
+
+        if (is_string($value) && strtolower($value) === 'null') {
+            return null;
+        }
+
+        return $value;
     }
 
     public function search(): array

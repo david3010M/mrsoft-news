@@ -13,6 +13,11 @@ use Illuminate\Routing\Controller as BaseController;
  *             description="API's for MrSoft News",
  * )
  *
+ * @OA\Server(
+ *      url=L5_SWAGGER_CONST_HOST,
+ *      description="Servidor de la API (dinámico: usa APP_URL del entorno actual)"
+ * )
+ *
  * @OA\SecurityScheme(
  *      securityScheme="bearerAuth",
  *      in="header",
@@ -24,15 +29,15 @@ use Illuminate\Routing\Controller as BaseController;
  *
  * @OA\Schema (
  *      schema="PaginationLinks",
- *      @OA\Property(property="first", type="string", example="https://develop.garzasoft.com/mrsoft-news/public/api/path?page=1"),
- *      @OA\Property(property="last", type="string", example="https://develop.garzasoft.com/mrsoft-news/public/api/path?page=4"),
+ *      @OA\Property(property="first", type="string", example="/api/path?page=1"),
+ *      @OA\Property(property="last", type="string", example="/api/path?page=4"),
  *      @OA\Property(property="prev", type="string", example="null"),
- *      @OA\Property(property="next", type="string", example="https://develop.garzasoft.com/mrsoft-news/public/api/path?page=2")
+ *      @OA\Property(property="next", type="string", example="/api/path?page=2")
  *  )
  *
  * @OA\Schema (
  *      schema="PaginationMetaLinks",
- *      @OA\Property(property="url", type="string", example="https://develop.garzasoft.com/mrsoft-news/public/api/path?page=1"),
+ *      @OA\Property(property="url", type="string", example="/api/path?page=1"),
  *      @OA\Property(property="label", type="string", example="1"),
  *      @OA\Property(property="active", type="boolean", example="true")
  *  )
@@ -43,7 +48,7 @@ use Illuminate\Routing\Controller as BaseController;
  *      @OA\Property(property="from", type="integer", example="1"),
  *      @OA\Property(property="last_page", type="integer", example="4"),
  *      @OA\Property(property="links", type="object", ref="#/components/schemas/PaginationMetaLinks"),
- *      @OA\Property(property="path", type="string", example="https://develop.garzasoft.com/mrsoft-news/public/api/path"),
+ *      @OA\Property(property="path", type="string", example="/api/path"),
  *      @OA\Property(property="per_page", type="integer", example="15"),
  *      @OA\Property(property="to", type="integer", example="15"),
  *      @OA\Property(property="total", type="integer", example="60")

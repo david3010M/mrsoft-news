@@ -11,7 +11,7 @@ class TypeController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/mrsoft-news/public/api/type",
+     *     path="/api/type",
      *     summary="Get all types",
      *     tags={"Type"},
      *     @OA\Parameter(name="product", in="query", required=true, description="Product name", @OA\Schema(type="string", enum={"Gesrest", "360sys", "HotelHUB", "Comprobante-e", "Mr. Soft"})),
@@ -41,7 +41,7 @@ class TypeController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/mrsoft-news/public/api/type",
+     *     path="/api/type",
      *     summary="Create a new type",
      *     tags={"Type"},
      *     @OA\RequestBody(
@@ -63,7 +63,7 @@ class TypeController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/mrsoft-news/public/api/type/{id}",
+     *     path="/api/type/{id}",
      *     summary="Get type by id",
      *     tags={"Type"},
      *     @OA\Parameter(name="id", in="path", required=true, description="Type id", @OA\Schema(type="integer")),
@@ -88,7 +88,7 @@ class TypeController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/mrsoft-news/public/api/type/{id}",
+     *     path="/api/type/{id}",
      *     summary="Update a type",
      *     tags={"Type"},
      *     @OA\Parameter(name="id", in="path", required=true, description="Type id", @OA\Schema(type="integer")),
@@ -113,7 +113,7 @@ class TypeController extends Controller
 
     /**
      * @OA\Delete(
-     *     path="/mrsoft-news/public/api/type/{id}",
+     *     path="/api/type/{id}",
      *     summary="Delete a type",
      *     tags={"Type"},
      *     @OA\Parameter(name="id", in="path", required=true, description="Type id", @OA\Schema(type="integer")),

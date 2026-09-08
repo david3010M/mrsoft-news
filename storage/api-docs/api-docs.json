@@ -5,15 +5,21 @@
         "description": "API's for MrSoft News",
         "version": "1.0"
     },
+    "servers": [
+        {
+            "url": "http://mrsoft-news.test",
+            "description": "Servidor de la API (dinámico: usa APP_URL del entorno actual)"
+        }
+    ],
     "paths": {
-        "/mrsoft-news/public/api/category": {
+        "/api/category": {
             "get": {
                 "tags": [
                     "Category"
                 ],
                 "summary": "Get all categories",
                 "description": "Display a listing of the resource.",
-                "operationId": "3ee5b0b0f9df3c5123de1091b06b2dc7",
+                "operationId": "327644f4d836240fa297b2822ab6ca92",
                 "responses": {
                     "200": {
                         "description": "Success",
@@ -49,7 +55,7 @@
                     "Category"
                 ],
                 "summary": "Create a new category",
-                "operationId": "ee36f77e53b0b59f2e65843d81a23962",
+                "operationId": "de40ad04180a48262a05cf249f785ab3",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -111,13 +117,13 @@
                 }
             }
         },
-        "/mrsoft-news/public/api/category/{id}": {
+        "/api/category/{id}": {
             "get": {
                 "tags": [
                     "Category"
                 ],
                 "summary": "Get category by id",
-                "operationId": "b98e3928259d724a132b50fa97c6abcf",
+                "operationId": "25690688339275caf7ded3e8702e7670",
                 "parameters": [
                     {
                         "name": "id",
@@ -177,7 +183,7 @@
                     "Category"
                 ],
                 "summary": "Update a category",
-                "operationId": "85787a13dc95c52f9b656ac208e70fff",
+                "operationId": "9be67b4880d28356ade2ebc0b425415e",
                 "parameters": [
                     {
                         "name": "id",
@@ -267,7 +273,7 @@
                     "Category"
                 ],
                 "summary": "Delete a category",
-                "operationId": "a8581be8233dbb6ea663aa1e6b464183",
+                "operationId": "534a636fb456263f752f0983f8097fb5",
                 "parameters": [
                     {
                         "name": "id",
@@ -315,13 +321,13 @@
                 }
             }
         },
-        "/mrsoft-news/public/api/client": {
+        "/api/client": {
             "get": {
                 "tags": [
                     "Client"
                 ],
                 "summary": "Get all clients",
-                "operationId": "e73f3cdc353bdbb5e43d1b52f8a83f6b",
+                "operationId": "47edc6bb25c81b54f272e0c1b29d7bd8",
                 "parameters": [
                     {
                         "name": "product",
@@ -377,7 +383,7 @@
                     "Client"
                 ],
                 "summary": "Create a new client",
-                "operationId": "2313dcdd890cf29fe732276010ef7355",
+                "operationId": "5147ed146b40ef320b49d9fb3eca3995",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -434,13 +440,13 @@
                 }
             }
         },
-        "/mrsoft-news/public/api/client/{id}": {
+        "/api/client/{id}": {
             "get": {
                 "tags": [
                     "Client"
                 ],
                 "summary": "Get client by id",
-                "operationId": "84d9d6135813d7d3d594b0c7e42de3f6",
+                "operationId": "b403f421c2533750ad586d0ad518a40b",
                 "parameters": [
                     {
                         "name": "id",
@@ -486,7 +492,7 @@
                     "Client"
                 ],
                 "summary": "Update a client",
-                "operationId": "50cd1d93bea54e735dc0bf608573d1ac",
+                "operationId": "6eaa437cccd8b64c7d0667883ab34eb6",
                 "parameters": [
                     {
                         "name": "id",
@@ -570,7 +576,7 @@
                     "Client"
                 ],
                 "summary": "Delete a client",
-                "operationId": "0a888c1010d1daf4dd81579eeb41ab85",
+                "operationId": "70455e4432e9a807e36e627a78353c9d",
                 "parameters": [
                     {
                         "name": "id",
@@ -618,13 +624,13 @@
                 }
             }
         },
-        "/mrsoft-news/public/api/comment": {
+        "/api/comment": {
             "get": {
                 "tags": [
                     "Comment"
                 ],
                 "summary": "Get all comments",
-                "operationId": "06b2891082f112ff9228211b406d4c27",
+                "operationId": "c561bf3062eb2fd096a331aaca319c76",
                 "parameters": [
                     {
                         "name": "product",
@@ -680,7 +686,7 @@
                     "Comment"
                 ],
                 "summary": "Create a new comment/testimonial",
-                "operationId": "eec6f17607b80f1f39819f62732eff8b",
+                "operationId": "8aa076dd8e387ea517f9722d89e09af3",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -737,13 +743,13 @@
                 }
             }
         },
-        "/mrsoft-news/public/api/comment/{id}": {
+        "/api/comment/{id}": {
             "get": {
                 "tags": [
                     "Comment"
                 ],
                 "summary": "Get comment by id",
-                "operationId": "d64a6f96c1335308c90a648fe5730544",
+                "operationId": "b14d2a3c17aa747dc601c54bdf348bf9",
                 "parameters": [
                     {
                         "name": "id",
@@ -789,7 +795,7 @@
                     "Comment"
                 ],
                 "summary": "Update a comment/testimonial",
-                "operationId": "38eee11bdafd1fd1c6f2fcda5bbd4b6a",
+                "operationId": "58d5268605f3286ab81e3cf9f422a833",
                 "parameters": [
                     {
                         "name": "id",
@@ -873,7 +879,7 @@
                     "Comment"
                 ],
                 "summary": "Delete a comment/testimonial",
-                "operationId": "f4b15b79e29fb791a5a84f6bbd523b39",
+                "operationId": "3b25b6f44049d90c415f7b62ca01b468",
                 "parameters": [
                     {
                         "name": "id",
@@ -921,13 +927,13 @@
                 }
             }
         },
-        "/mrsoft-news/public/api/contact": {
+        "/api/contact": {
             "post": {
                 "tags": [
                     "Contact"
                 ],
                 "summary": "Send a contact form email",
-                "operationId": "d0cb8d4d5ecf044adeb029d769e65f19",
+                "operationId": "bc749962129af50f203b1defb75ada5e",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -1022,13 +1028,13 @@
                 }
             }
         },
-        "/mrsoft-news/public/api/contactByValues": {
+        "/api/contactByValues": {
             "post": {
                 "tags": [
                     "Contact"
                 ],
                 "summary": "Send a styled email with custom key-value data",
-                "operationId": "13ea432346091493f47b69879011c22c",
+                "operationId": "0073eb5349aa9aaa57bddf6e790d35f1",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -1114,14 +1120,14 @@
                 }
             }
         },
-        "/mrsoft-news/public/api/news": {
+        "/api/news": {
             "get": {
                 "tags": [
                     "News"
                 ],
                 "summary": "Get all news",
                 "description": "Display a listing of the resource.",
-                "operationId": "e9bbde231983d3a541f5d7223ae5466f",
+                "operationId": "9bfe744cf19dcb58e9ab9677c29ee6c7",
                 "parameters": [
                     {
                         "name": "product",
@@ -1190,7 +1196,7 @@
                     "News"
                 ],
                 "summary": "Create a new news entry",
-                "operationId": "7d0c787ec0ccb194a4baa6e99f2e10c4",
+                "operationId": "1c0fdf6cc53f1508a87121ef9111be5b",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -1266,14 +1272,14 @@
                 }
             }
         },
-        "/mrsoft-news/public/api/news/{id}": {
+        "/api/news/{id}": {
             "get": {
                 "tags": [
                     "News"
                 ],
                 "summary": "Get news by id",
                 "description": "Display the specified resource.",
-                "operationId": "aa37968e565a5dac6ec373f31b22dad7",
+                "operationId": "235a202c862ec6888f4129413c1f2bcd",
                 "parameters": [
                     {
                         "name": "id",
@@ -1313,7 +1319,7 @@
                     "News"
                 ],
                 "summary": "Update a news entry",
-                "operationId": "50b2c75b342267c457e7bc5a271977eb",
+                "operationId": "11a73338ef61a1ffd2ab3771639f638e",
                 "parameters": [
                     {
                         "name": "id",
@@ -1414,7 +1420,7 @@
                     "News"
                 ],
                 "summary": "Delete a news entry",
-                "operationId": "29fdfb96c5a947a8cc98516d56e29904",
+                "operationId": "cd3235328b3ea2080e4d0a47986d4714",
                 "parameters": [
                     {
                         "name": "id",
@@ -1580,13 +1586,13 @@
                 }
             }
         },
-        "/mrsoft-news/public/api/reel": {
+        "/api/reel": {
             "get": {
                 "tags": [
                     "Reel"
                 ],
                 "summary": "Get all reels",
-                "operationId": "bdc349ef0a097282fc223ca049def836",
+                "operationId": "80de2ef32c561052fce0e50a0613ab1c",
                 "parameters": [
                     {
                         "name": "product",
@@ -1641,7 +1647,7 @@
                     "Reel"
                 ],
                 "summary": "Create a new reel",
-                "operationId": "4cf332713ce8d2ba6eedc56896aa0884",
+                "operationId": "e1fdc4e983d44be22a8d7f023a8b8381",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -1698,13 +1704,13 @@
                 }
             }
         },
-        "/mrsoft-news/public/api/reel/{id}": {
+        "/api/reel/{id}": {
             "get": {
                 "tags": [
                     "Reel"
                 ],
                 "summary": "Get reel by id",
-                "operationId": "acc3d4399adee3f62a53bdf16b07d9b9",
+                "operationId": "47671f3045fc171476eed13fc8fa4b73",
                 "parameters": [
                     {
                         "name": "id",
@@ -1750,7 +1756,7 @@
                     "Reel"
                 ],
                 "summary": "Update a reel",
-                "operationId": "c25982b6eb0825be4f5bd23047dc73f2",
+                "operationId": "b6bed8da7159681e650543f9636539b0",
                 "parameters": [
                     {
                         "name": "id",
@@ -1834,7 +1840,7 @@
                     "Reel"
                 ],
                 "summary": "Delete a reel",
-                "operationId": "a6e184743f2fb9c796d6511ad9b9048b",
+                "operationId": "f3c899cfc15d6ae53e079cbbac867e46",
                 "parameters": [
                     {
                         "name": "id",
@@ -1882,13 +1888,220 @@
                 }
             }
         },
-        "/mrsoft-news/public/api/type": {
+        "/api/testimonio-tag": {
+            "get": {
+                "tags": [
+                    "Testimonio"
+                ],
+                "summary": "Get all testimonio tags",
+                "operationId": "b02c66c26361c2d2dad274835dd12c77",
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Limit of tags",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TagTestimonioResourceCollection"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/testimonio-tag/{id}": {
+            "get": {
+                "tags": [
+                    "Testimonio"
+                ],
+                "summary": "Get testimonio tag by id",
+                "operationId": "15687af3bf5779b8ab81691456b647ac",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Tag id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TagTestimonioResource"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Tag not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/testimonio": {
+            "get": {
+                "tags": [
+                    "Testimonio"
+                ],
+                "summary": "Get all testimonios",
+                "operationId": "31a0561e5cb12cb78c13d81a9fac4b57",
+                "parameters": [
+                    {
+                        "name": "product_id",
+                        "in": "query",
+                        "description": "Filter by product id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "destacado",
+                        "in": "query",
+                        "description": "Only featured testimonios",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    {
+                        "name": "tag_id",
+                        "in": "query",
+                        "description": "Filter by motivo/tag id",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Limit of testimonios",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TestimonioResourceCollection"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/testimonio/{id}": {
+            "get": {
+                "tags": [
+                    "Testimonio"
+                ],
+                "summary": "Get testimonio by id",
+                "operationId": "06b161685b749015b6525bb7359fade4",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Testimonio id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TestimonioResource"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Testimonio not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/type": {
             "get": {
                 "tags": [
                     "Type"
                 ],
                 "summary": "Get all types",
-                "operationId": "8b343f14e5a744fefbb5a6c2a1ee4505",
+                "operationId": "ac31b07f4c002f0cbff9d6af7302b47c",
                 "parameters": [
                     {
                         "name": "product",
@@ -1944,7 +2157,7 @@
                     "Type"
                 ],
                 "summary": "Create a new type",
-                "operationId": "8062a2f7fbc842a52e4ef6aeb787fb7a",
+                "operationId": "2924d32de8b50bc27c7591342a5731f3",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -1992,13 +2205,13 @@
                 }
             }
         },
-        "/mrsoft-news/public/api/type/{id}": {
+        "/api/type/{id}": {
             "get": {
                 "tags": [
                     "Type"
                 ],
                 "summary": "Get type by id",
-                "operationId": "7b292d9e73ade0e8ae90e8b50d2c948e",
+                "operationId": "37dc82effaab0147d8d9725fe2d2b436",
                 "parameters": [
                     {
                         "name": "id",
@@ -2044,7 +2257,7 @@
                     "Type"
                 ],
                 "summary": "Update a type",
-                "operationId": "e714fc28f411d3f83a7f6a53450a46ba",
+                "operationId": "53c32c2f1a96eaec608e9ec9abddce22",
                 "parameters": [
                     {
                         "name": "id",
@@ -2120,7 +2333,7 @@
                     "Type"
                 ],
                 "summary": "Delete a type",
-                "operationId": "8fdd34af53c72390c7c4a77a43f2868d",
+                "operationId": "9c3d7e9bd16b72fa20a8ea809da06e0c",
                 "parameters": [
                     {
                         "name": "id",
@@ -2175,11 +2388,11 @@
                 "properties": {
                     "first": {
                         "type": "string",
-                        "example": "https://develop.garzasoft.com/mrsoft-news/public/api/path?page=1"
+                        "example": "/api/path?page=1"
                     },
                     "last": {
                         "type": "string",
-                        "example": "https://develop.garzasoft.com/mrsoft-news/public/api/path?page=4"
+                        "example": "/api/path?page=4"
                     },
                     "prev": {
                         "type": "string",
@@ -2187,7 +2400,7 @@
                     },
                     "next": {
                         "type": "string",
-                        "example": "https://develop.garzasoft.com/mrsoft-news/public/api/path?page=2"
+                        "example": "/api/path?page=2"
                     }
                 },
                 "type": "object"
@@ -2196,7 +2409,7 @@
                 "properties": {
                     "url": {
                         "type": "string",
-                        "example": "https://develop.garzasoft.com/mrsoft-news/public/api/path?page=1"
+                        "example": "/api/path?page=1"
                     },
                     "label": {
                         "type": "string",
@@ -2228,7 +2441,7 @@
                     },
                     "path": {
                         "type": "string",
-                        "example": "https://develop.garzasoft.com/mrsoft-news/public/api/path"
+                        "example": "/api/path"
                     },
                     "per_page": {
                         "type": "integer",
@@ -2304,38 +2517,9 @@
                         "type": "string",
                         "example": "News description"
                     },
-                    "imagen_referencia": {
-                        "type": "string",
-                        "example": "https://develop.garzasoft.com/storage/logo.png"
-                    },
-                    "flyer_bienvenida": {
-                        "type": "string",
-                        "example": "https://develop.garzasoft.com/storage/logo.png"
-                    },
-                    "flyer_informativo": {
-                        "type": "string",
-                        "example": "https://develop.garzasoft.com/storage/logo.png"
-                    },
                     "type": {
                         "type": "string",
                         "example": "News description"
-                    },
-                    "comment": {
-                        "properties": {
-                            "text": {
-                                "type": "string",
-                                "example": "News description"
-                            },
-                            "author": {
-                                "type": "string",
-                                "example": "News description"
-                            },
-                            "position": {
-                                "type": "string",
-                                "example": "News description"
-                            }
-                        },
-                        "type": "object"
                     },
                     "departments": {
                         "$ref": "#/components/schemas/DepartmentResourceCollection"
@@ -2521,6 +2705,69 @@
                     "$ref": "#/components/schemas/ReelResource"
                 }
             },
+            "TagTestimonioResource": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "nombre": {
+                        "type": "string",
+                        "example": "Facilidad de uso"
+                    }
+                },
+                "type": "object"
+            },
+            "TagTestimonioResourceCollection": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/TagTestimonioResource"
+                }
+            },
+            "TestimonioResource": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "titulo": {
+                        "type": "string",
+                        "example": "Más control de caja"
+                    },
+                    "descripcion": {
+                        "type": "string",
+                        "example": "Este es un pequeño resumen"
+                    },
+                    "destacado": {
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "url": {
+                        "type": "string",
+                        "example": "https://www.youtube.com/shorts/abc123"
+                    },
+                    "cliente": {
+                        "$ref": "#/components/schemas/ClientResource"
+                    },
+                    "producto": {
+                        "type": "string",
+                        "example": "Gesrest"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/TagTestimonioResource"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "TestimonioResourceCollection": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/TestimonioResource"
+                }
+            },
             "TypeResource": {
                 "properties": {
                     "id": {
@@ -2583,6 +2830,10 @@
         {
             "name": "Reel",
             "description": "Reel"
+        },
+        {
+            "name": "Testimonio",
+            "description": "Testimonio"
         },
         {
             "name": "Type",

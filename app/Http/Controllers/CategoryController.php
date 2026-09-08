@@ -10,7 +10,7 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      * @OA\Get(
-     *     path="/mrsoft-news/public/api/category",
+     *     path="/api/category",
      *     summary="Get all categories",
      *     tags={"Category"},
      *     @OA\Response(response="200", description="Success", @OA\JsonContent(type="array",
@@ -37,7 +37,7 @@ class CategoryController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/mrsoft-news/public/api/category",
+     *     path="/api/category",
      *     summary="Create a new category",
      *     tags={"Category"},
      *     @OA\RequestBody(
@@ -63,7 +63,7 @@ class CategoryController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/mrsoft-news/public/api/category/{id}",
+     *     path="/api/category/{id}",
      *     summary="Get category by id",
      *     tags={"Category"},
      *     @OA\Parameter(name="id", in="path", required=true, description="Category id", @OA\Schema(type="integer")),
@@ -92,7 +92,7 @@ class CategoryController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/mrsoft-news/public/api/category/{id}",
+     *     path="/api/category/{id}",
      *     summary="Update a category",
      *     tags={"Category"},
      *     @OA\Parameter(name="id", in="path", required=true, description="Category id", @OA\Schema(type="integer")),
@@ -121,7 +121,7 @@ class CategoryController extends Controller
 
     /**
      * @OA\Delete(
-     *     path="/mrsoft-news/public/api/category/{id}",
+     *     path="/api/category/{id}",
      *     summary="Delete a category",
      *     tags={"Category"},
      *     @OA\Parameter(name="id", in="path", required=true, description="Category id", @OA\Schema(type="integer")),

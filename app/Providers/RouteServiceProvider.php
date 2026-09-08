@@ -33,6 +33,12 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
+
+            // Helpers del panel: mismo stack que las rutas internas de MoonShine
+            // (grupo 'moonshine' + auth), sin el grupo 'web' para no duplicar sesión.
+            Route::middleware(['moonshine', \MoonShine\Http\Middleware\Authenticate::class])
+                ->prefix(config('moonshine.route.prefix', 'admin'))
+                ->group(base_path('routes/moonshine-helpers.php'));
         });
     }
 

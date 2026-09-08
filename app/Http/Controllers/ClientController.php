@@ -14,7 +14,7 @@ class ClientController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/mrsoft-news/public/api/client",
+     *     path="/api/client",
      *     summary="Get all clients",
      *     tags={"Client"},
      *     @OA\Parameter(name="product", in="query", required=true, description="Product name", @OA\Schema(type="string", enum={"Gesrest", "360sys", "HotelHUB", "Comprobante-e", "Mr. Soft"})),
@@ -50,7 +50,7 @@ class ClientController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/mrsoft-news/public/api/client",
+     *     path="/api/client",
      *     summary="Create a new client",
      *     tags={"Client"},
      *     @OA\RequestBody(
@@ -74,7 +74,7 @@ class ClientController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/mrsoft-news/public/api/client/{id}",
+     *     path="/api/client/{id}",
      *     summary="Get client by id",
      *     tags={"Client"},
      *     @OA\Parameter(name="id", in="path", required=true, description="Client id", @OA\Schema(type="integer")),
@@ -99,7 +99,7 @@ class ClientController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/mrsoft-news/public/api/client/{id}",
+     *     path="/api/client/{id}",
      *     summary="Update a client",
      *     tags={"Client"},
      *     @OA\Parameter(name="id", in="path", required=true, description="Client id", @OA\Schema(type="integer")),
@@ -126,7 +126,7 @@ class ClientController extends Controller
 
     /**
      * @OA\Delete(
-     *     path="/mrsoft-news/public/api/client/{id}",
+     *     path="/api/client/{id}",
      *     summary="Delete a client",
      *     tags={"Client"},
      *     @OA\Parameter(name="id", in="path", required=true, description="Client id", @OA\Schema(type="integer")),

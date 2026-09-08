@@ -312,7 +312,10 @@ return [
          * Constants which can be used in annotations
          */
         'constants'             => [
-            'L5_SWAGGER_CONST_HOST' => env('L5_SWAGGER_CONST_HOST', 'http://my-default-host.com'),
+            // Host base de la API para Swagger. Por defecto usa APP_URL, así el
+            // servidor de la documentación es dinámico según el entorno/proyecto
+            // (local, develop, producción) sin tocar las anotaciones.
+            'L5_SWAGGER_CONST_HOST' => env('L5_SWAGGER_CONST_HOST', rtrim((string) env('APP_URL', 'http://localhost'), '/')),
         ],
     ],
 ];

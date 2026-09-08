@@ -34,7 +34,7 @@ class NewsRelatedResource extends JsonResource
             'date' => $this->date,
 //            'product' => $this->product->name,
             'category' => $this->category->name,
-            'image' => $this->image ? asset('storage/' . $this->image) : asset('/storage/clientes/placeholder.svg'),
+            'image' => media_url($this->image) ?? media_url('clientes/placeholder.svg'),
         ];
     }
 }

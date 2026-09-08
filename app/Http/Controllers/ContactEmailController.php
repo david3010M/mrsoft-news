@@ -15,7 +15,7 @@ class ContactEmailController extends Controller
 {
     /**
      * @OA\Post(
-     *     path="/mrsoft-news/public/api/contact",
+     *     path="/api/contact",
      *     summary="Send a contact form email",
      *     tags={"Contact"},
      *     @OA\RequestBody(
@@ -67,7 +67,7 @@ class ContactEmailController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/mrsoft-news/public/api/contactByValues",
+     *     path="/api/contactByValues",
      *     summary="Send a styled email with custom key-value data",
      *     tags={"Contact"},
      *     @OA\RequestBody(

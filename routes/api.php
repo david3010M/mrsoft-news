@@ -7,6 +7,8 @@ use App\Http\Controllers\ContactEmailController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReelController;
+use App\Http\Controllers\TagTestimonioController;
+use App\Http\Controllers\TestimonioController;
 use App\Http\Controllers\TypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -43,6 +45,12 @@ Route::resource('comment', CommentController::class)->only(['index', 'show', 'st
 
 Route::resource('type', TypeController::class)->only(['index', 'show', 'store', 'update', 'destroy'])
     ->names(['index' => 'type.index', 'store' => 'type.store', 'show' => 'type.show', 'update' => 'type.update', 'destroy' => 'type.destroy']);
+
+Route::resource('testimonio', TestimonioController::class)->only(['index', 'show'])
+    ->names(['index' => 'testimonio.index', 'show' => 'testimonio.show']);
+
+Route::resource('testimonio-tag', TagTestimonioController::class)->only(['index', 'show'])
+    ->names(['index' => 'testimonio-tag.index', 'show' => 'testimonio-tag.show']);
 
 Route::get('products/{product}/pricing', [ProductController::class, 'pricing'])->name('product.pricing');
 

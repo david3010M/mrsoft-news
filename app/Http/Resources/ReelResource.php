@@ -29,7 +29,7 @@ class ReelResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
-            'video' => asset('storage/' . $this->video),
+            'video' => media_url($this->video),
         ];
     }
 }

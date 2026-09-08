@@ -11,7 +11,7 @@ class ReelController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/mrsoft-news/public/api/reel",
+     *     path="/api/reel",
      *     summary="Get all reels",
      *     tags={"Reel"},
      *     @OA\Parameter(name="product", in="query", required=true, description="Product name", @OA\Schema(type="string", enum={"Gesrest", "360sys", "HotelHUB", "Comprobante-e"})),
@@ -45,7 +45,7 @@ class ReelController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/mrsoft-news/public/api/reel",
+     *     path="/api/reel",
      *     summary="Create a new reel",
      *     tags={"Reel"},
      *     @OA\RequestBody(
@@ -69,7 +69,7 @@ class ReelController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/mrsoft-news/public/api/reel/{id}",
+     *     path="/api/reel/{id}",
      *     summary="Get reel by id",
      *     tags={"Reel"},
      *     @OA\Parameter(name="id", in="path", required=true, description="Reel id", @OA\Schema(type="integer")),
@@ -94,7 +94,7 @@ class ReelController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/mrsoft-news/public/api/reel/{id}",
+     *     path="/api/reel/{id}",
      *     summary="Update a reel",
      *     tags={"Reel"},
      *     @OA\Parameter(name="id", in="path", required=true, description="Reel id", @OA\Schema(type="integer")),
@@ -121,7 +121,7 @@ class ReelController extends Controller
 
     /**
      * @OA\Delete(
-     *     path="/mrsoft-news/public/api/reel/{id}",
+     *     path="/api/reel/{id}",
      *     summary="Delete a reel",
      *     tags={"Reel"},
      *     @OA\Parameter(name="id", in="path", required=true, description="Reel id", @OA\Schema(type="integer")),

@@ -13,7 +13,7 @@ class NewsController extends Controller
     /**
      * Display a listing of the resource.
      * @OA\Get(
-     *     path="/mrsoft-news/public/api/news",
+     *     path="/api/news",
      *     summary="Get all news",
      *     tags={"News"},
      *     @OA\Parameter(name="product", in="query", required=true, description="Product name", @OA\Schema(type="string", enum={"Gesrest", "360sys", "HotelHUB", "Comprobante-e"})),
@@ -51,7 +51,7 @@ class NewsController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/mrsoft-news/public/api/news",
+     *     path="/api/news",
      *     summary="Create a new news entry",
      *     tags={"News"},
      *     @OA\RequestBody(
@@ -80,7 +80,7 @@ class NewsController extends Controller
     /**
      * Display the specified resource.
      * @OA\Get(
-     *     path="/mrsoft-news/public/api/news/{id}",
+     *     path="/api/news/{id}",
      *     summary="Get news by id",
      *     tags={"News"},
      *     @OA\Parameter( name="id", in="path", required=true, description="News id", @OA\Schema(type="integer")),
@@ -103,7 +103,7 @@ class NewsController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/mrsoft-news/public/api/news/{id}",
+     *     path="/api/news/{id}",
      *     summary="Update a news entry",
      *     tags={"News"},
      *     @OA\Parameter(name="id", in="path", required=true, description="News id", @OA\Schema(type="integer")),
@@ -134,7 +134,7 @@ class NewsController extends Controller
 
     /**
      * @OA\Delete(
-     *     path="/mrsoft-news/public/api/news/{id}",
+     *     path="/api/news/{id}",
      *     summary="Delete a news entry",
      *     tags={"News"},
      *     @OA\Parameter(name="id", in="path", required=true, description="News id", @OA\Schema(type="integer")),

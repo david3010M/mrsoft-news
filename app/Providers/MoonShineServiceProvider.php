@@ -13,6 +13,8 @@ use App\Models\File;
 use App\Models\News;
 use App\Models\Product;
 use App\Models\Reel;
+use App\Models\TagTestimonio;
+use App\Models\Testimonio;
 use App\Models\Type;
 use App\MoonShine\Resources\AddressResource;
 use App\MoonShine\Resources\CategoryResource;
@@ -24,6 +26,8 @@ use App\MoonShine\Resources\NewsResource;
 use App\MoonShine\Resources\ProductModuleResource;
 use App\MoonShine\Resources\ProductResource;
 use App\MoonShine\Resources\ReelResource;
+use App\MoonShine\Resources\TagTestimonioResource;
+use App\MoonShine\Resources\TestimonioResource;
 use App\MoonShine\Resources\TypeResource;
 use MoonShine\ActionButtons\ActionButton;
 use MoonShine\Providers\MoonShineApplicationServiceProvider;
@@ -72,6 +76,8 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 MenuItem::make('Tipos', new TypeResource(), 'heroicons.finger-print')->badge(fn() => (string)Type::count()),
                 MenuItem::make('Departamentos', new DepartmentResource(), 'heroicons.map')->badge(fn() => (string)Department::count()),
                 MenuItem::make('Comentarios', new CommentResource(), 'heroicons.outline.chat-bubble-bottom-center-text')->badge(fn() => (string)Comment::count()),
+                MenuItem::make('Testimonios', new TestimonioResource(), 'heroicons.outline.sparkles')->badge(fn() => (string)Testimonio::count()),
+                MenuItem::make('Motivos de testimonio', new TagTestimonioResource(), 'heroicons.outline.tag')->badge(fn() => (string)TagTestimonio::count()),
                 MenuItem::make('Subir Archivos', new FileResource(), 'heroicons.cloud-arrow-up')->badge(fn() => (string)File::count()),
             ], 'heroicons.outline.folder'),
 //            MenuItem::make('Documentation', 'https://moonshine-laravel.com')

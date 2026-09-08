@@ -11,7 +11,7 @@ class CommentController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/mrsoft-news/public/api/comment",
+     *     path="/api/comment",
      *     summary="Get all comments",
      *     tags={"Comment"},
      *     @OA\Parameter(name="product", in="query", required=true, description="Product name", @OA\Schema(type="string", enum={"Gesrest", "360sys", "HotelHUB", "Comprobante-e", "Mr. Soft"})),
@@ -46,7 +46,7 @@ class CommentController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/mrsoft-news/public/api/comment",
+     *     path="/api/comment",
      *     summary="Create a new comment/testimonial",
      *     tags={"Comment"},
      *     @OA\RequestBody(
@@ -70,7 +70,7 @@ class CommentController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/mrsoft-news/public/api/comment/{id}",
+     *     path="/api/comment/{id}",
      *     summary="Get comment by id",
      *     tags={"Comment"},
      *     @OA\Parameter(name="id", in="path", required=true, description="Comment id", @OA\Schema(type="integer")),
@@ -95,7 +95,7 @@ class CommentController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/mrsoft-news/public/api/comment/{id}",
+     *     path="/api/comment/{id}",
      *     summary="Update a comment/testimonial",
      *     tags={"Comment"},
      *     @OA\Parameter(name="id", in="path", required=true, description="Comment id", @OA\Schema(type="integer")),
@@ -122,7 +122,7 @@ class CommentController extends Controller
 
     /**
      * @OA\Delete(
-     *     path="/mrsoft-news/public/api/comment/{id}",
+     *     path="/api/comment/{id}",
      *     summary="Delete a comment/testimonial",
      *     tags={"Comment"},
      *     @OA\Parameter(name="id", in="path", required=true, description="Comment id", @OA\Schema(type="integer")),

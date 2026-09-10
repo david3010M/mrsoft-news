@@ -86,7 +86,8 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
-        //
+        $client = Client::with('type.product', 'comment', 'addresses.department', 'departments')->find($client->id);
+        return ClientResource::make($client);
     }
 
     /**
